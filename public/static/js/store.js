@@ -540,29 +540,41 @@
       const bars_per_chord = parseInt(data.bars_per_chord ?? 1, 10);
       const time_signature = data.time_signature || "4/4";
       if (!VALID_TS.has(time_signature)) throw httpError(400, "invalid time_signature");
-      let ramp_start_bpm = data.ramp_start_bpm ?? null;
-      let ramp_end_bpm = data.ramp_end_bpm ?? null;
-      let ramp_curve = data.ramp_curve ?? null;
-      if (ramp_start_bpm != null) {
-        ramp_start_bpm = parseInt(ramp_start_bpm, 10);
-        ramp_end_bpm = ramp_end_bpm != null ? parseInt(ramp_end_bpm, 10) : ramp_start_bpm;
-        if (Number.isNaN(ramp_start_bpm) || Number.isNaN(ramp_end_bpm)) {
-          throw httpError(400, "ramp bpm values must be integers");
-        }
-      }
-      if (ramp_curve != null && !["linear", "step"].includes(ramp_curve)) {
-        throw httpError(400, "ramp_curve must be 'linear' or 'step'");
-      }
+      const ramp_percent = data.ramp_percent != null
+        ? Math.max(0, Math.min(100, parseInt(data.ramp_percent, 10) || 0))
+        : 0;
       const id = newId();
       const item = {
         id, session_id: sessionId, position, target_type, target_id: parseInt(target_id, 10),
         duration_seconds, bpm, time_signature, bars_per_chord,
-        ramp_start_bpm, ramp_end_bpm, ramp_curve, completed_at: null,
+        ramp_percent, completed_at: null,
       };
       await put("practice_session_item", item);
       const chord = target_type === "chord" ? await get("chord", item.target_id) : null;
       const prog = target_type === "progression" ? await get("progression", item.target_id) : null;
       return { ...item, target_name: chord ? chord.display_name : prog ? prog.name : null };
+    },
+
+    async updatePracticeSessionItem(sessionId, itemId, data) {
+      const item = await get("practice_session_item", itemId);
+      if (!item || item.session_id !== sessionId) throw httpError(404, "not found");
+      const target_type = data.target_type || item.target_type;
+      if (!["chord", "progression"].includes(target_type)) throw httpError(400, "invalid target_type");
+      const target_id = data.target_id != null ? parseInt(data.target_id, 10) : item.target_id;
+      const duration_seconds = data.duration_seconds != null ? parseInt(data.duration_seconds, 10) : item.duration_seconds;
+      const bpm = data.bpm != null ? parseInt(data.bpm, 10) : item.bpm;
+      const time_signature = data.time_signature || item.time_signature;
+      if (!VALID_TS.has(time_signature)) throw httpError(400, "invalid time_signature");
+      const bars_per_chord = data.bars_per_chord != null ? parseInt(data.bars_per_chord, 10) : item.bars_per_chord;
+      const ramp_percent = data.ramp_percent != null
+        ? Math.max(0, Math.min(100, parseInt(data.ramp_percent, 10) || 0))
+        : (item.ramp_percent || 0);
+      const next = {
+        ...item, target_type, target_id, duration_seconds, bpm,
+        time_signature, bars_per_chord, ramp_percent,
+      };
+      await put("practice_session_item", next);
+      return next;
     },
 
     async deletePracticeSessionItem(sessionId, itemId) {
@@ -883,6 +895,38 @@
       for (const n of names) t.objectStore(n).clear();
       await txDone(t);
       await seedIfNeeded();
+    },
+
+    // Clear only logged practice sessions (resets stats on every chord/progression)
+    // but keeps the library, custom chords, categories, routines, and completions.
+    async resetStats() {
+      await clearStore("session");
+    },
+
+    // --- User profile (name, etc.) ---
+    async getProfile() {
+      const row = await get("meta", "profile");
+      return row ? row.value : { name: "" };
+    },
+
+    async saveProfile(profile) {
+      const value = { name: (profile && profile.name) ? String(profile.name).trim().slice(0, 80) : "" };
+      await put("meta", { key: "profile", value });
+      return value;
+    },
+
+    // --- Simple counts for the profile page ---
+    async storageSummary() {
+      const out = {};
+      for (const s of STORES) out[s.name] = await count(s.name);
+      let bytes = 0;
+      try {
+        if (navigator.storage && navigator.storage.estimate) {
+          const est = await navigator.storage.estimate();
+          bytes = est.usage || 0;
+        }
+      } catch (_) {}
+      return { counts: out, bytes };
     },
   };
 

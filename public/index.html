@@ -26,14 +26,14 @@
     </nav>
     <div class="app-search">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input type="text" placeholder="Search chords, progressions…" disabled />
+      <input type="text" id="global-search" placeholder="Search chords, progressions…" />
       <span class="kbd">⌘K</span>
     </div>
     <div class="streak-chip" title="Current practice streak">
       <svg width="11" height="11" viewBox="0 0 24 24"><path d="M12 2c1 3 4 5 4 9a4 4 0 1 1-8 0c0-1 .5-2 1-3-.5 4 3 4 3 7-2 0-3-2-3-4 0-3 3-5 3-9z"/></svg>
       <span id="stat-streak">—</span> day streak
     </div>
-    <div class="app-avatar">RK</div>
+    <button type="button" id="app-avatar-btn" class="app-avatar" title="Open profile">RK</button>
   </header>
 
   <main>
@@ -91,7 +91,7 @@
         <div class="card heatmap-card">
           <div class="card-header">
             <div>
-              <div class="st-cap-sm">Activity · last 12 months</div>
+              <div class="st-cap-sm">Activity · last 12 months <span class="info-dot" tabindex="0" aria-label="About the activity heatmap" data-tip="A GitHub-style map of your last 12 months. Each square is one day; darker squares mean longer practice. Hover a square to see the exact time."></span></div>
               <div class="meta" style="margin-top: 4px;">
                 <span class="big st-mono" id="heatmap-total-sessions">—</span> sessions
                 <span style="color: var(--ink-3); margin-left: 12px;">·</span>
@@ -106,7 +106,7 @@
 
         <div class="card">
           <div class="card-header">
-            <div class="st-cap-sm">Today's plan</div>
+            <div class="st-cap-sm">Today's plan <span class="info-dot" tabindex="0" aria-label="About Today's plan" data-tip="Recommended things to practice today, picked from your history: the chord with the lowest recent accuracy, the one you haven't touched in the longest, any BPM plateau, plus one progression that uses them."></span></div>
             <span class="kpi-sub" id="plan-summary">—</span>
           </div>
           <div id="today-plan" style="display: flex; flex-direction: column; gap: 8px;"></div>
@@ -120,7 +120,7 @@
       <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px;">
         <div class="card">
           <div class="card-header">
-            <div class="st-cap-sm">Recent sessions</div>
+            <div class="st-cap-sm">Recent sessions <span class="info-dot" tabindex="0" aria-label="About recent sessions" data-tip="Every finished practice run, newest first — what you played, the BPM, and how long. Click the delete icon to drop one; it will update every stat that depended on it."></span></div>
             <a class="btn btn-sm btn-ghost" id="all-sessions-btn">View all →</a>
           </div>
           <div id="sessions-list" class="sessions-list">
@@ -131,7 +131,7 @@
 
         <div class="card">
           <div class="card-header">
-            <div class="st-cap-sm">Fretboard density</div>
+            <div class="st-cap-sm">Fretboard density <span class="info-dot" tabindex="0" aria-label="About the fretboard heatmap" data-tip="Where you spend time on the neck. Each dot is a fret/string you've drilled; the brighter it is, the more total practice time landed there."></span></div>
             <span class="kpi-sub" id="fretboard-meta">—</span>
           </div>
           <svg id="fretboard-heatmap" class="fretboard-svg" viewBox="0 0 360 90"></svg>
@@ -144,7 +144,7 @@
         <div class="card">
           <div class="card-header">
             <div style="display: flex; align-items: center; gap: 10px;">
-              <div class="st-cap-sm" id="progress-chart-title">Last 14 days</div>
+              <div class="st-cap-sm" id="progress-chart-title">Last 14 days <span class="info-dot" tabindex="0" aria-label="About the practice chart" data-tip="Minutes practiced per bucket. Toggle between days, weeks and months — the last bar is always the current period in progress."></span></div>
               <span class="kpi-sub" id="recent-peak">—</span>
             </div>
             <div class="axis-toggle" role="group" aria-label="Chart range" id="progress-range-toggle">
@@ -214,7 +214,7 @@
       <div class="page-header">
         <div>
           <div class="st-cap">Sessions / Routines</div>
-          <h1>Routines</h1>
+          <h1>Routines <span class="info-dot" tabindex="0" aria-label="About routines" data-tip="A routine is an ordered list of practice items — pick a chord or progression, set BPM, time signature, duration and an optional tempo-ramp percent. Start one item at a time or 'Start routine' to run them all back-to-back."></span></h1>
         </div>
       </div>
       <!-- Practice Session Builder tab is now its own section -->
@@ -235,22 +235,73 @@
               <div>Select a routine to view its items</div>
             </div>
             <div id="pb-items-content" class="hidden">
-              <div class="pb-panel-header">
+              <div class="pb-items-header">
                 <span class="pb-panel-title" id="pb-selected-session-name">Routine</span>
-                <button class="btn btn-sm" id="pb-add-item-btn">+ Add item</button>
+                <div class="pb-items-actions">
+                  <button class="btn btn-sm btn-primary" id="pb-start-routine-btn" title="Play every item in order">▶ Start routine</button>
+                  <button class="btn btn-sm" id="pb-add-item-btn">+ Add item</button>
+                </div>
               </div>
               <div id="pb-items-list" class="pb-items-list">
                 <div class="empty">No items yet — add something to practice.</div>
               </div>
-              <div class="pb-footer">
-                <span class="tempo-ramp">
-                  <span class="st-cap-sm">Tempo ramp</span>
-                  <span class="switch" id="tempo-ramp-switch"></span>
-                  <span class="st-mono" id="tempo-ramp-range" style="color: var(--ink-2);">70 → 110 bpm</span>
-                </span>
-              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== PROFILE =============== -->
+    <section id="view-profile" class="hidden">
+      <div class="page-header">
+        <div>
+          <div class="st-cap">You</div>
+          <h1>Profile</h1>
+          <div class="subline">Everything String Time stores — about you and your practice — stays in this browser. Nothing is sent anywhere.</div>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <div class="card">
+          <div class="card-header">
+            <div class="st-cap-sm">Your name</div>
+          </div>
+          <p class="hint" style="margin-top:0">We use this only on this device — it never leaves the browser.</p>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <input type="text" id="profile-name" placeholder="e.g. Rahul" maxlength="80" class="profile-input" />
+            <button class="btn btn-primary btn-sm" id="profile-name-save">Save</button>
+          </div>
+          <div class="hint" id="profile-name-status"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="st-cap-sm">Backup &amp; restore</div>
+          </div>
+          <p class="hint" style="margin-top:0">Export writes a JSON file with everything in your browser's storage. Import replaces what's here with the contents of a backup.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm" id="profile-export-btn">Export data</button>
+            <button class="btn btn-sm" id="profile-import-btn">Import data</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="st-cap-sm">Danger zone</div>
+          </div>
+          <p class="hint" style="margin-top:0"><strong>Reset stats</strong> deletes every logged practice session (every chord's time, BPM trend, accuracy, and your streak), but keeps your chords, progressions, categories and routines. <strong>Wipe all data</strong> empties the whole database and reseeds the stock library.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm btn-danger" id="profile-reset-stats-btn">Reset stats</button>
+            <button class="btn btn-sm btn-danger" id="profile-wipe-btn">Wipe all data</button>
+          </div>
+        </div>
+
+        <div class="card profile-storage-card">
+          <div class="card-header">
+            <div class="st-cap-sm">What's stored</div>
+            <span class="kpi-sub" id="profile-storage-size">—</span>
+          </div>
+          <table class="profile-table" id="profile-storage-table"></table>
         </div>
       </div>
     </section>
@@ -455,7 +506,7 @@
   <div id="pb-add-item-modal" class="modal hidden" role="dialog" aria-modal="true">
     <div class="modal-content pb-item-modal">
       <div class="modal-header">
-        <h3>Add practice item</h3>
+        <h3 id="pb-item-modal-title">Add practice item</h3>
         <button class="modal-close" id="pb-item-close" aria-label="Close">×</button>
       </div>
       <div class="modal-body">
@@ -472,10 +523,6 @@
             <select id="pb-item-target"></select>
           </div>
           <div class="control">
-            <label for="pb-item-duration">Duration (minutes)</label>
-            <input type="number" id="pb-item-duration" min="1" max="60" value="2" />
-          </div>
-          <div class="control">
             <label for="pb-item-bpm">BPM</label>
             <input type="number" id="pb-item-bpm" min="40" max="240" value="80" />
           </div>
@@ -487,6 +534,10 @@
               <option value="6/8">6/8</option>
             </select>
           </div>
+          <div class="control">
+            <label for="pb-item-duration">Duration (minutes)</label>
+            <input type="number" id="pb-item-duration" min="1" max="60" value="2" />
+          </div>
           <div class="control" id="pb-item-bpc-wrap">
             <label for="pb-item-bpc">Bars / chord</label>
             <select id="pb-item-bpc">
@@ -494,6 +545,11 @@
               <option value="2">2</option>
               <option value="4">4</option>
             </select>
+          </div>
+          <div class="control pb-item-ramp-wrap">
+            <label for="pb-item-ramp">Tempo ramp (%)</label>
+            <input type="number" id="pb-item-ramp" min="0" max="100" step="1" value="0" />
+            <p class="hint">0 keeps BPM steady. 10 means the item ramps from the BPM above up to +10% over its duration.</p>
           </div>
         </div>
         <div class="builder-actions">
@@ -542,6 +598,8 @@
   <script src="static/js/practice-session-builder.js"></script>
   <script src="static/js/practice.js"></script>
   <script src="static/js/export-import.js"></script>
+  <script src="static/js/profile.js"></script>
+  <script src="static/js/search.js"></script>
   <script src="static/js/app.js"></script>
 </body>
 </html>

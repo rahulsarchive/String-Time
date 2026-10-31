@@ -24,6 +24,7 @@
       dashboard: document.getElementById("view-dashboard"),
       library:   document.getElementById("view-library"),
       routines:  document.getElementById("view-routines"),
+      profile:   document.getElementById("view-profile"),
     };
     const navs = document.querySelectorAll(".app-nav a[data-view]");
     function go(name) {
@@ -37,7 +38,9 @@
       if (name === "dashboard" && window.Dashboard._heatmapData) {
         W.yearHeatmap(document.getElementById("heatmap-year"), window.Dashboard._heatmapData, { cell: 13, gap: 3 });
       }
+      if (name === "profile" && window.Profile) window.Profile.refresh();
     }
+    window.Dashboard._go = go;
     navs.forEach((a) => a.addEventListener("click", (e) => {
       e.preventDefault();
       go(a.dataset.view);
@@ -214,7 +217,6 @@
       row.querySelector(".reason").textContent = p.reason;
       row.querySelector(".goal").textContent = `${p.goalMin}m`;
       row.addEventListener("click", () => {
-        // Push selection into practice
         const practice = window._practiceInstance;
         if (!practice) return;
         if (p.kind === "chord") {
@@ -224,8 +226,7 @@
           const card = document.querySelector(`.prog-card[data-prog-id="${p.target.id}"]`);
           practice._selectProgression && practice._selectProgression(p.target, card);
         }
-        // Switch to library view so user sees what got selected, then scroll to play bar
-        document.getElementById("play-bar")?.scrollIntoView({ block: "end", behavior: "smooth" });
+        // No scrollIntoView — the play bar floats in place once a selection pops it.
       });
       host.appendChild(row);
     });

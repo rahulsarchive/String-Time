@@ -30,7 +30,12 @@
       clearBtn: document.getElementById("builder-clear"),
       saveBtn: document.getElementById("builder-save"),
       closeBtn: document.getElementById("chord-builder-close"),
-      onSave: async () => {
+      onSave: async (created) => {
+        // If a custom category is currently active, drop the new chord into it
+        // so the user actually sees it in the view they're staring at.
+        if (created && practice.activeChordCategoryId !== "all") {
+          try { await Api.addChordToCategory(practice.activeChordCategoryId, created.id); } catch (_) {}
+        }
         await practice.loadData();
         sessionBuilder.setData(practice.chords, practice.progressions);
         if (window.Dashboard) await window.Dashboard.refresh(practice);

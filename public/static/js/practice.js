@@ -562,18 +562,24 @@
 
     _selectChord(chord, card) {
       this._clearSelectionUi();
-      card.classList.add("selected");
+      if (card) card.classList.add("selected");
+      const wasPlaying = this.metronome && this.metronome.isRunning;
+      const prev = this.selection;
       this.selection = { type: "chord", id: chord.id, chord };
       this.currentChordIndex = 0;
       this._renderNowPlaying();
       this.elPlayBtn.disabled = false;
       this.elBpcWrap.classList.add("hidden");
       this._configureMetronome();
+      // Pop the player and start if nothing is currently running.
+      if (!wasPlaying) this._start();
+      else if (prev && prev.id !== chord.id) this._updateBarChordLabels(0);
     }
 
     _selectProgression(prog, card) {
       this._clearSelectionUi();
-      card.classList.add("selected");
+      if (card) card.classList.add("selected");
+      const wasPlaying = this.metronome && this.metronome.isRunning;
       this.selection = { type: "progression", id: prog.id, progression: prog };
       this.currentChordIndex = 0;
       if (prog.time_signature) this.elTimeSig.value = prog.time_signature;
@@ -582,6 +588,7 @@
       this._renderNowPlaying();
       this.elPlayBtn.disabled = false;
       this._configureMetronome();
+      if (!wasPlaying) this._start();
     }
 
     _renderNowPlaying(flash) {
@@ -726,6 +733,9 @@
       this._builderItemEndCallback = null;
       this._builderItemNaturalEnd = false;
       this.targetDurationSec = null;
+      this.rampStartBpm = null;
+      this.rampEndBpm = null;
+      this._lastRampBpm = null;
 
       this._saveSession(payload).then(() => {
         if (cb) cb(natural ? "complete" : "abort");
@@ -741,6 +751,17 @@
         const m = Math.floor(remaining / 60);
         const s = remaining % 60;
         this.elTimer.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+        // Per-item BPM ramp: linear from rampStart → rampEnd over the item duration.
+        if (this.rampStartBpm != null && this.rampEndBpm != null && this.targetDurationSec > 0) {
+          const t = Math.min(1, elapsedSec / this.targetDurationSec);
+          const bpm = Math.round(this.rampStartBpm + (this.rampEndBpm - this.rampStartBpm) * t);
+          if (bpm !== this._lastRampBpm) {
+            this._lastRampBpm = bpm;
+            this.elBpm.value = bpm;
+            this.elBpmSlider.value = bpm;
+            if (this.metronome) this.metronome.configure({ bpm });
+          }
+        }
         if (remaining <= 0) {
           // Natural completion — flag and stop
           this._builderItemNaturalEnd = true;
@@ -826,6 +847,17 @@
       this.targetDurationSec = item.duration_seconds;
       this._builderItemEndCallback = onEnd || null;
       this._builderItemNaturalEnd = false;
+
+      // Per-item tempo ramp: start at item.bpm, end at bpm * (1 + percent/100).
+      const pct = Math.max(0, Math.min(100, parseInt(item.ramp_percent || 0, 10) || 0));
+      if (pct > 0) {
+        this.rampStartBpm = parseInt(item.bpm, 10) || 80;
+        this.rampEndBpm = Math.min(240, Math.round(this.rampStartBpm * (1 + pct / 100)));
+      } else {
+        this.rampStartBpm = null;
+        this.rampEndBpm = null;
+      }
+      this._lastRampBpm = null;
 
       this._start();
     }
