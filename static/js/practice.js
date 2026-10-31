@@ -131,7 +131,8 @@
       });
       this.elChordTabContent.classList.toggle("hidden", name !== "chord");
       this.elProgTabContent.classList.toggle("hidden", name !== "progression");
-      this.elPracticeBuilderTab.classList.toggle("hidden", name !== "practice-builder");
+      // NOTE: practice-builder-tab now lives in its own view (#view-routines),
+      // not as a sibling tab here, so we do not toggle its visibility.
 
       const showBpc = name === "progression"
         || (this.selection && this.selection.type === "progression");

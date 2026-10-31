@@ -30,9 +30,14 @@
 
   // ── Chart (re-uses dashboard renderer if available) ─────────────────
   async function loadAndDrawChart(range) {
-    const data = await fetch(`/api/stats/progress?range=${range}`).then((r) => r.json());
+    const data = await fetch(`/api/stats/progress?range=${range}&count=14`).then((r) => r.json());
     chartData = data;
     drawChart(data);
+    const titleEl = document.getElementById("progress-chart-title");
+    if (titleEl) {
+      const unit = range === "weeks" ? "weeks" : range === "months" ? "months" : "days";
+      titleEl.textContent = `Last 14 ${unit}`;
+    }
   }
 
   function drawChart(data) {

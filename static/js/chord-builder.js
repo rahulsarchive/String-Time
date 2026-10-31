@@ -28,6 +28,8 @@
       this.onSave = onSave;
 
       this.frets = [null, null, null, null, null, null]; // start fully muted
+      this.fingers = [null, null, null, null, null, null]; // click-order finger numbers
+      this._fingerCounter = 0;
 
       this._buildSvg();
       this._wireEvents();
@@ -122,6 +124,8 @@
       if (cur === null) this.frets[stringIdx] = 0;
       else if (cur === 0) this.frets[stringIdx] = null;
       else this.frets[stringIdx] = 0; // any fret -> open
+      // open/muted strings have no finger
+      this.fingers[stringIdx] = null;
       this._renderDots();
       this._syncTextFromFrets();
     }
@@ -130,8 +134,14 @@
       // Clicking the same fret again clears it (back to muted).
       if (this.frets[stringIdx] === fret) {
         this.frets[stringIdx] = null;
+        this.fingers[stringIdx] = null;
       } else {
+        const hadFinger = this.fingers[stringIdx] != null;
         this.frets[stringIdx] = fret;
+        if (!hadFinger) {
+          this._fingerCounter++;
+          this.fingers[stringIdx] = ((this._fingerCounter - 1) % 4) + 1;
+        }
       }
       this._renderDots();
       this._syncTextFromFrets();
@@ -155,6 +165,7 @@
 
       // Clear and redraw fingered dots
       while (this.dotsLayer.firstChild) this.dotsLayer.removeChild(this.dotsLayer.firstChild);
+      const dotR = Math.min(stringSpacing, fretSpacing) * 0.32;
       for (let s = 0; s < 6; s++) {
         const v = this.frets[s];
         if (v === null || v === 0) continue;
@@ -163,9 +174,21 @@
         const x = padLeft + s * stringSpacing;
         const y = padTop + (f - 0.5) * fretSpacing;
         el("circle", {
-          cx: x, cy: y, r: Math.min(stringSpacing, fretSpacing) * 0.32,
+          cx: x, cy: y, r: dotR,
           fill: "#9333ea",
         }, this.dotsLayer);
+        const fingerNum = this.fingers[s];
+        if (fingerNum != null) {
+          const label = el("text", {
+            x: x, y: y + dotR * 0.42,
+            fill: "#ffffff",
+            "font-size": Math.round(dotR * 1.25),
+            "text-anchor": "middle",
+            "font-family": "'Plus Jakarta Sans', sans-serif",
+            "font-weight": "700",
+          }, this.dotsLayer);
+          label.textContent = String(fingerNum);
+        }
       }
     }
 
@@ -177,6 +200,9 @@
       const parsed = window.ChordDiagram.parseFretString(this.textInput.value);
       if (parsed) {
         this.frets = parsed.slice();
+        // Text input doesn't carry click order, so reset finger numbers
+        this.fingers = [null, null, null, null, null, null];
+        this._fingerCounter = 0;
         this._renderDots();
         this.textInput.style.borderColor = "";
       } else {
@@ -191,6 +217,8 @@
       });
       this.clearBtn.addEventListener("click", () => {
         this.frets = [null, null, null, null, null, null];
+        this.fingers = [null, null, null, null, null, null];
+        this._fingerCounter = 0;
         this.nameInput.value = "";
         this._renderDots();
         this._syncTextFromFrets();
@@ -215,7 +243,7 @@
       const payload = {
         display_name: name,
         frets: this.frets,
-        fingers: this.frets.map((f) => (f !== null && f > 0 ? null : null)),
+        fingers: this.fingers,
       };
       try {
         const res = await fetch("/api/chords", {
@@ -238,6 +266,8 @@
 
     show() {
       this.frets = [null, null, null, null, null, null];
+      this.fingers = [null, null, null, null, null, null];
+      this._fingerCounter = 0;
       this.nameInput.value = "";
       this._renderDots();
       this._syncTextFromFrets();

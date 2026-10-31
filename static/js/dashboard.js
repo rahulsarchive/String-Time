@@ -29,9 +29,13 @@
     function go(name) {
       Object.entries(views).forEach(([k, el]) => el && el.classList.toggle("hidden", k !== name));
       navs.forEach((a) => a.classList.toggle("active", a.dataset.view === name));
+      // The practice-builder-tab now lives inside #view-routines; make sure
+      // nothing (e.g. legacy tab-switching in practice.js) left it hidden.
+      const pbTab = document.getElementById("practice-builder-tab");
+      if (pbTab) pbTab.classList.remove("hidden");
       // Trigger reflow/re-render of heatmaps if dashboard becomes visible
       if (name === "dashboard" && window.Dashboard._heatmapData) {
-        W.yearHeatmap(document.getElementById("heatmap-year"), window.Dashboard._heatmapData);
+        W.yearHeatmap(document.getElementById("heatmap-year"), window.Dashboard._heatmapData, { cell: 13, gap: 3 });
       }
     }
     navs.forEach((a) => a.addEventListener("click", (e) => {
@@ -127,7 +131,7 @@
   async function renderHeatmap() {
     const data = await fetch("/api/stats/heatmap?days=365").then((r) => r.json());
     window.Dashboard._heatmapData = data;
-    W.yearHeatmap(document.getElementById("heatmap-year"), data);
+    W.yearHeatmap(document.getElementById("heatmap-year"), data, { cell: 13, gap: 3 });
     // header totals
     const totalSec = data.reduce((s, r) => s + (r.total_seconds || 0), 0);
     const totalSess = data.filter((r) => r.total_seconds > 0).length;
@@ -390,7 +394,8 @@
 
     renderTodayHeader(summary, todayMinutes);
     renderKPITiles(summary, progressData, todayMinutes);
-    render14Days(progressData);
+    // The #progress-chart bar chart is owned by window.History (which also handles
+    // the Days/Weeks/Months toggle now living inside that cell). No render here.
     await renderHeatmap();
 
     // Plan + fretboard depend on chord data which practice owns
@@ -430,7 +435,7 @@
     // Resize handler — redraw heatmap and chart
     window.addEventListener("resize", debounce(() => {
       if (window.Dashboard._heatmapData) {
-        W.yearHeatmap(document.getElementById("heatmap-year"), window.Dashboard._heatmapData);
+        W.yearHeatmap(document.getElementById("heatmap-year"), window.Dashboard._heatmapData, { cell: 13, gap: 3 });
       }
       // Trigger history chart redraw if visible
       if (window.History && window.History.redrawChart) window.History.redrawChart();
