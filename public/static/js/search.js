@@ -7,20 +7,54 @@
     const show = (card, name) => {
       card.style.display = (!q || name.includes(q)) ? "" : "none";
     };
+    let chordHits = 0, progHits = 0;
     document.querySelectorAll(".chord-card").forEach((c) => {
-      show(c, (c.querySelector(".cc-name")?.textContent || "").toLowerCase());
+      const name = (c.querySelector(".cc-name")?.textContent || "").toLowerCase();
+      show(c, name);
+      if (q && name.includes(q)) chordHits++;
     });
     document.querySelectorAll(".prog-card").forEach((c) => {
-      show(c, (c.querySelector(".name")?.textContent || "").toLowerCase());
+      const name = (c.querySelector(".name")?.textContent || "").toLowerCase();
+      show(c, name);
+      if (q && name.includes(q)) progHits++;
     });
     // Keep the "+ Add custom" / "Build progression" tiles always visible.
     document.querySelectorAll(".add-card").forEach((c) => { c.style.display = ""; });
+
+    // If the query only matches progressions (or vice-versa), auto-flip to that
+    // tab so the user sees the hits.
+    if (q) {
+      const chordTabBtn = document.querySelector('.picker .tab[data-tab="chord"]');
+      const progTabBtn = document.querySelector('.picker .tab[data-tab="progression"]');
+      if (chordHits === 0 && progHits > 0 && progTabBtn && !progTabBtn.classList.contains("active")) {
+        progTabBtn.click();
+      } else if (progHits === 0 && chordHits > 0 && chordTabBtn && !chordTabBtn.classList.contains("active")) {
+        chordTabBtn.click();
+      }
+    }
   }
 
   function wireSearch() {
     const input = document.getElementById("global-search");
     if (!input) return;
-    input.addEventListener("input", () => applyFilter(input.value));
+    input.addEventListener("input", () => {
+      // Typing a query without being on the Library view does nothing visible —
+      // the cards only exist there. Jump the user over on first keystroke so
+      // the filter has something to filter.
+      if (input.value && window.Dashboard && window.Dashboard._go) {
+        const current = document.querySelector('.app-nav a.active')?.dataset.view;
+        if (current !== "library") window.Dashboard._go("library");
+      }
+      applyFilter(input.value);
+    });
+    input.addEventListener("focus", () => {
+      // Focusing the search also implies "I want to search" — switch to Library
+      // so the user sees cards appear/filter as they type.
+      if (window.Dashboard && window.Dashboard._go) {
+        const current = document.querySelector('.app-nav a.active')?.dataset.view;
+        if (current !== "library") window.Dashboard._go("library");
+      }
+    });
     input.addEventListener("keydown", (e) => {
       if (e.key === "Escape") { input.value = ""; applyFilter(""); input.blur(); }
     });

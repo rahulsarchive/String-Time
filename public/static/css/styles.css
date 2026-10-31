@@ -222,26 +222,28 @@ a { color: inherit; text-decoration: none; }
 }
 button.app-avatar:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft); }
 
-/* Info dot used on dashboard section headers */
+/* Info marker used on dashboard section headers.
+   Uses the Unicode "circled lowercase i" glyph so it reads as a tiny
+   copyright-style badge without needing a dedicated SVG. */
 .info-dot {
-  display: inline-flex;
-  width: 13px; height: 13px;
-  margin-left: 4px;
-  border-radius: 999px;
-  background: var(--bg-sunk);
-  color: var(--ink-3);
-  font-size: 9px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  margin-left: 5px;
+  color: var(--ink-4);
+  font-size: 13px;
+  line-height: 1;
+  font-family: var(--font-body);
   cursor: help;
   user-select: none;
   vertical-align: middle;
   outline: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  text-transform: none;
+  letter-spacing: 0;
 }
-.info-dot::before { content: "i"; }
-.info-dot:hover, .info-dot:focus { background: var(--accent-soft); color: var(--accent); }
+.info-dot::before { content: "\24D8"; }
+.info-dot:hover, .info-dot:focus { color: var(--accent); }
 .info-bubble {
   position: absolute;
   z-index: 400;
