@@ -1,131 +1,156 @@
-# Guitar Practice Tracker 🎸
+# String Time 🎸
 
-A single-user local webapp for tracking guitar practice, building reusable
-practice routines, and playing along to a metronome with synthesized chord
-audio.
+A guitar practice tracker that runs entirely in your browser. No account,
+no backend, no tracking. Your practice data lives in IndexedDB on your own
+device.
 
-![Guitar Practice Tracker](/Guitar%20Practice%20Tracker.png)
+Live: **https://stringtime.com** · Source: this repo.
 
-## Run
+![String Time dashboard](docs/screenshot-dashboard.jpg)
 
-```
-pip install -r requirements.txt
-python app.py
-```
+## What it does
 
-Then open <http://127.0.0.1:8765> in your browser.
+- **Practice** — pick a chord or progression, set BPM (40–240) and time
+  signature (4/4, 3/4, 6/8). A 4-bar horizontal playhead stays locked to
+  `audioContext.currentTime` so audio and visuals never drift.
+- **Chord audio** — Karplus-Strong plucked-string synth with per-string
+  decay, brightness and pick-attack. Each strum is staggered ~70 ms across
+  six strings with jitter so it feels hand-played.
+- **Progressions** — build custom chord sequences, choose bars-per-chord
+  (1, 2 or 4), drag to reorder.
+- **Custom chords** — click fretboard positions or type `x 3 2 0 1 0` style
+  notation. Frets 0–24.
+- **Routines** — named reusable practice sessions, each item with its own
+  target, duration, BPM and ramp. Checked off as you complete them.
+- **Categories** — group chords or progressions into tags.
+- **History & stats** — GitHub-style 365-day heatmap, bar chart with
+  days/weeks/months toggle, current and longest streak, average
+  minutes/day, most active hour of day, per-chord totals.
+- **Today's plan** — picks three chords and a progression to drill based on
+  accuracy, days since practice, and BPM plateau detection.
+- **Export / Import** — one-click JSON backup you can carry to another
+  browser or machine.
 
-On first run, the SQLite DB at `data/practice.db` is created and seeded with
-26 chords, 30 progressions, and a starter chord-category set.
-
-## Features
-
-### Practice
-
-- Pick a single chord or a progression, set BPM (40–240) and time signature
-  (4/4, 3/4, 6/8).
-- 4-bar horizontal playhead synced to a Web Audio metronome — audio and visual
-  are locked to `audioContext.currentTime` so they stay in sync regardless of
-  framerate.
-- For progressions: configurable bars-per-chord (1, 2, or 4); the chord
-  display advances with the beat.
-- Add **custom chords** — click positions on the fretboard or type
-  `x 3 2 0 1 0` style notation. Frets 0–24 supported.
-- Build **custom progressions** — pick chords from the list, drag to reorder,
-  set time signature and bars/chord.
-
-### Practice session builder
-
-- Create named, reusable **practice sessions** — ordered lists of items, each
-  with its own target (chord or progression), duration, BPM, time signature,
-  and bars/chord.
-- Each item runs its own per-item timer; the chord overlay updates per bar.
-- Check items off as you go; completion state persists in the DB.
-- Sessions can be renamed, deleted, and replayed.
-
-### Categories
-
-- Group chords or progressions into custom **categories** (e.g. "open
-  chords", "barre", "12-bar variants") for quick filtering in the picker.
-- Category membership is many-to-many — a chord can live in several
-  categories.
-
-### Sound
-
-Three audio modes; selection persists across reloads via `localStorage`.
-
-- **Tick only** — classic metronome click.
-- **Chord only** — Karplus-Strong plucked-string synth strums the current
-  chord on the downbeat of every bar. No tick.
-- **Both** — tick + chord. Good for ear training.
-
-The synth uses per-string parameters (decay, brightness, pick attack, gain)
-so bass strings ring longer and warmer while plain treble strings decay
-quicker and brighter. Each strum is staggered ~70 ms across six strings with
-±2 ms jitter to feel like a hand sweeping down. See
-[`CHORD_AUDIO_FIXES.md`](CHORD_AUDIO_FIXES.md) and
-[`CHORD_AUDIO_FIXES_V2.md`](CHORD_AUDIO_FIXES_V2.md) for engine details.
-
-### History & stats
-
-- **GitHub-style heatmap** of the last 365 days (one cell per day, shaded
-  by total minutes).
-- **Progress chart** — bar chart with days / weeks / months range toggles.
-- **Summary metrics**: current streak, longest streak, average minutes per
-  day (last 30 days), most active hour of day, this-week total.
-- **Sessions list** with date, duration, BPM, target, and optional notes.
-- All-sessions modal is paginated (10/page) and supports session delete.
-- Per-chord stats: total practice time and last-used BPM, shown in the
-  chord picker.
-
-## Database
-
-SQLite at `data/practice.db`. Auto-migrates on every startup via a seed
-version system, so existing data is preserved across upgrades.
-
-Core tables:
-
-| Table | Purpose |
-|---|---|
-| `chord` | Built-in and custom chords (frets + finger positions as JSON) |
-| `progression` + `progression_chord` | Ordered chord sequences |
-| `chord_category` + `chord_category_member` | Custom chord grouping |
-| `progression_category` + `progression_category_member` | Custom progression grouping |
-| `session` | Logged practice sessions (timing, BPM, target, notes) |
-| `practice_session` + `practice_session_item` | Named reusable routines |
-
-To wipe and start fresh:
+## Architecture
 
 ```
-del data\practice.db   # Windows
-rm data/practice.db    # Mac/Linux
-python app.py
+Browser                                     Cloudflare Pages (CDN)
+┌──────────────────────────┐                ┌──────────────────────┐
+│  index.html              │ ◄───static ────│  public/             │
+│  static/js/*.js          │                │   index.html         │
+│  static/css/styles.css   │                │   static/            │
+│                          │ ◄── library ───│   library.json       │
+│  ┌────────────────────┐  │                │   terms.html         │
+│  │ IndexedDB          │  │                │   privacy.html       │
+│  │  • chord           │  │                │   _headers           │
+│  │  • progression     │  │                └──────────────────────┘
+│  │  • session         │  │
+│  │  • practice_session│  │                No server. No DB. No logs.
+│  │  • …               │  │                Each push to main
+│  └────────────────────┘  │                auto-deploys the whole site.
+└──────────────────────────┘
 ```
+
+- **No backend.** All runtime data stays in each visitor's own IndexedDB,
+  seeded on first visit from `/library.json` (26 chords, 29 progressions,
+  16 practice modules).
+- **No server state.** Cloudflare Pages serves static files from its CDN.
+  There is nothing to log into, no DB to back up, no VM to patch.
+- **Export / Import** is how you move your data between browsers.
 
 ## Project layout
 
 ```
-app.py                       # Flask app: routes, models, seed/migration
-seed.py                      # Initial data: chords, progressions, categories
-templates/index.html         # Single-page UI (modal-driven)
-static/js/
-  app.js                     # Boot — wires all modules
-  practice.js                # Practice flow, picker, mode toggle
-  metronome.js               # Web Audio scheduler + playhead SVG
-  chord-audio.js             # Karplus-Strong synth (see CHORD_AUDIO_FIXES*.md)
-  chord-diagram.js           # Fretboard SVG rendering
-  chord-builder.js           # Custom chord editor
-  progression-builder.js     # Drag-reorder progression sequencer
-  practice-session-builder.js  # Named-routine CRUD and item runner
-  history.js                 # Heatmap, progress chart, metrics, sessions list
-static/css/                  # Single light theme
-data/practice.db             # SQLite (auto-created)
+public/                       ← Cloudflare Pages serves this directory
+  index.html                    main app shell
+  terms.html, privacy.html      legal pages
+  404.html                      not-found page
+  library.json                  baked seed data (chords, progressions, routines)
+  _headers                      Cloudflare Pages: CSP, HSTS, cache rules
+  static/
+    css/styles.css
+    js/
+      store.js                  IndexedDB wrapper + Api facade
+      app.js                    boot, wires modules together
+      practice.js               practice flow, picker, mode toggle
+      metronome.js              Web Audio scheduler + playhead SVG
+      chord-audio.js            Karplus-Strong synth
+      chord-diagram.js          fretboard SVG
+      chord-builder.js          custom chord editor
+      progression-builder.js    drag-reorder progression sequencer
+      practice-session-builder.js  named routines
+      dashboard.js              Today view
+      history.js                heatmap, chart, sessions list
+      widgets.js                shared chart/pill helpers
+      export-import.js          footer buttons
+
+scripts/
+  bake-library.py             rebuilds public/library.json from a seeded SQLite DB
 ```
 
-## Notes
+## Deploying
 
-- Single-user, runs locally — no auth, no multi-tenancy.
-- No external network calls. All audio is synthesized in-browser, all data
-  stays on disk.
-- Hard-refresh (`Ctrl + Shift + R`) after pulling JS changes — Flask's
-  default static handler doesn't cache-bust.
+Pushed to `main` → Cloudflare Pages picks it up, uploads `public/` to the
+CDN, swaps `https://stringtime.com` to the new version. No build step
+needed. Preview URLs are kept for every previous deploy so you can roll
+back in one click.
+
+Cloudflare Pages settings:
+- **Framework preset:** None
+- **Build command:** (empty)
+- **Build output directory:** `public`
+
+## Local development
+
+Any static server will do:
+
+```bash
+cd public && python -m http.server 8766
+```
+
+Then open <http://127.0.0.1:8766>. The app seeds itself on first load.
+
+### Rebuilding `library.json`
+
+The seed data (26 built-in chords, 29 progressions, 16 routine modules)
+lives in SQLite only during the old-backend bake step. To change it, edit
+the Python seed definitions on the `backup/pre-cloudflare` branch, run the
+old Flask app once to populate `data/practice.db`, then:
+
+```bash
+python scripts/bake-library.py
+```
+
+That rewrites `public/library.json`. Commit and push.
+
+## Security
+
+- No authentication surface (no accounts, no cookies, no session tokens).
+- No server, no API — the entire attack surface is a static CDN.
+- `_headers` sets strict CSP (`script-src 'self'`), HSTS, X-Frame-Options
+  DENY, Referrer-Policy no-referrer, and a Permissions-Policy that
+  disables mic / camera / geo / payment.
+- No analytics, no third-party JS beyond Google Fonts' CSS link.
+- Imported JSON files are treated as untrusted input: fields are stored
+  verbatim and rendered via `.textContent`, never `innerHTML`.
+
+## Privacy
+
+See [public/privacy.html](public/privacy.html) — the short version is: we
+collect nothing, we run no server, your data stays in your browser.
+
+## Legal
+
+- [Terms of Use](public/terms.html)
+- [Privacy Policy](public/privacy.html)
+
+Not professional instruction, not medical advice. For personal practice.
+
+## License
+
+Open source — see repository for details.
+
+---
+
+🤖 This project uses [Claude Code](https://claude.com/claude-code) for
+development assistance.

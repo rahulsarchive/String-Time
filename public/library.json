@@ -1,0 +1,2276 @@
+{
+  "schema_version": 1,
+  "chords": [
+    {
+      "id": 1,
+      "name": "C",
+      "display_name": "C",
+      "frets": [
+        null,
+        3,
+        2,
+        0,
+        1,
+        0
+      ],
+      "fingers": [
+        null,
+        3,
+        2,
+        null,
+        1,
+        null
+      ]
+    },
+    {
+      "id": 2,
+      "name": "D",
+      "display_name": "D",
+      "frets": [
+        null,
+        null,
+        0,
+        2,
+        3,
+        2
+      ],
+      "fingers": [
+        null,
+        null,
+        null,
+        1,
+        3,
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "name": "E",
+      "display_name": "E",
+      "frets": [
+        0,
+        2,
+        2,
+        1,
+        0,
+        0
+      ],
+      "fingers": [
+        null,
+        2,
+        3,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 4,
+      "name": "G",
+      "display_name": "G",
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ],
+      "fingers": [
+        3,
+        2,
+        null,
+        null,
+        null,
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "name": "A",
+      "display_name": "A",
+      "frets": [
+        null,
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      "fingers": [
+        null,
+        null,
+        1,
+        2,
+        3,
+        null
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Am",
+      "display_name": "Am",
+      "frets": [
+        null,
+        0,
+        2,
+        2,
+        1,
+        0
+      ],
+      "fingers": [
+        null,
+        null,
+        2,
+        3,
+        1,
+        null
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Dm",
+      "display_name": "Dm",
+      "frets": [
+        null,
+        null,
+        0,
+        2,
+        3,
+        1
+      ],
+      "fingers": [
+        null,
+        null,
+        null,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Em",
+      "display_name": "Em",
+      "frets": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "fingers": [
+        null,
+        2,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 9,
+      "name": "A7",
+      "display_name": "A7",
+      "frets": [
+        null,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      "fingers": [
+        null,
+        null,
+        1,
+        null,
+        2,
+        null
+      ]
+    },
+    {
+      "id": 10,
+      "name": "B7",
+      "display_name": "B7",
+      "frets": [
+        null,
+        2,
+        1,
+        2,
+        0,
+        2
+      ],
+      "fingers": [
+        null,
+        2,
+        1,
+        3,
+        null,
+        4
+      ]
+    },
+    {
+      "id": 11,
+      "name": "C7",
+      "display_name": "C7",
+      "frets": [
+        null,
+        3,
+        2,
+        3,
+        1,
+        0
+      ],
+      "fingers": [
+        null,
+        3,
+        2,
+        4,
+        1,
+        null
+      ]
+    },
+    {
+      "id": 12,
+      "name": "D7",
+      "display_name": "D7",
+      "frets": [
+        null,
+        null,
+        0,
+        2,
+        1,
+        2
+      ],
+      "fingers": [
+        null,
+        null,
+        null,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "id": 13,
+      "name": "E7",
+      "display_name": "E7",
+      "frets": [
+        0,
+        2,
+        0,
+        1,
+        0,
+        0
+      ],
+      "fingers": [
+        null,
+        2,
+        null,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 14,
+      "name": "G7",
+      "display_name": "G7",
+      "frets": [
+        3,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fingers": [
+        3,
+        2,
+        null,
+        null,
+        null,
+        1
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Cmaj7",
+      "display_name": "Cmaj7",
+      "frets": [
+        null,
+        3,
+        2,
+        0,
+        0,
+        0
+      ],
+      "fingers": [
+        null,
+        3,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Dmaj7",
+      "display_name": "Dmaj7",
+      "frets": [
+        null,
+        null,
+        0,
+        2,
+        2,
+        2
+      ],
+      "fingers": [
+        null,
+        null,
+        null,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Em7",
+      "display_name": "Em7",
+      "frets": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fingers": [
+        null,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Am7",
+      "display_name": "Am7",
+      "frets": [
+        null,
+        0,
+        2,
+        0,
+        1,
+        0
+      ],
+      "fingers": [
+        null,
+        null,
+        2,
+        null,
+        1,
+        null
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Dm7",
+      "display_name": "Dm7",
+      "frets": [
+        null,
+        null,
+        0,
+        2,
+        1,
+        1
+      ],
+      "fingers": [
+        null,
+        null,
+        null,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 20,
+      "name": "F",
+      "display_name": "F",
+      "frets": [
+        1,
+        3,
+        3,
+        2,
+        1,
+        1
+      ],
+      "fingers": [
+        1,
+        3,
+        4,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Bm",
+      "display_name": "Bm",
+      "frets": [
+        null,
+        2,
+        4,
+        4,
+        3,
+        2
+      ],
+      "fingers": [
+        null,
+        1,
+        3,
+        4,
+        2,
+        1
+      ]
+    },
+    {
+      "id": 22,
+      "name": "B",
+      "display_name": "B",
+      "frets": [
+        null,
+        2,
+        4,
+        4,
+        4,
+        2
+      ],
+      "fingers": [
+        null,
+        1,
+        2,
+        3,
+        4,
+        1
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Dsus4",
+      "display_name": "Dsus4",
+      "frets": [
+        null,
+        null,
+        0,
+        2,
+        3,
+        3
+      ],
+      "fingers": [
+        null,
+        null,
+        null,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Asus2",
+      "display_name": "Asus2",
+      "frets": [
+        null,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "fingers": [
+        null,
+        null,
+        1,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Cadd9",
+      "display_name": "Cadd9",
+      "frets": [
+        null,
+        3,
+        2,
+        0,
+        3,
+        0
+      ],
+      "fingers": [
+        null,
+        2,
+        1,
+        null,
+        3,
+        null
+      ]
+    },
+    {
+      "id": 26,
+      "name": "A7sus4",
+      "display_name": "A7sus4",
+      "frets": [
+        null,
+        0,
+        2,
+        0,
+        3,
+        0
+      ],
+      "fingers": [
+        null,
+        null,
+        1,
+        null,
+        3,
+        null
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "id": 1,
+      "name": "I-V-vi-IV in C (C-G-Am-F)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 2,
+      "name": "I-IV-V in G (G-C-D)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 3,
+      "name": "vi-IV-I-V (Am-F-C-G)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 4,
+      "name": "50s progression (C-Am-F-G)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 5,
+      "name": "House of the Rising Sun",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 6,
+      "name": "Knockin' on Heaven's Door",
+      "time_signature": "4/4",
+      "bars_per_chord": 2
+    },
+    {
+      "id": 7,
+      "name": "Wonderwall verse",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 8,
+      "name": "Change drill: A <-> D",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 9,
+      "name": "Change drill: A <-> E",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 10,
+      "name": "Change drill: D <-> E",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 11,
+      "name": "Change drill: Em <-> Am",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 12,
+      "name": "Change drill: Am <-> E",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 13,
+      "name": "Change drill: C <-> G",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 14,
+      "name": "Change drill: G <-> Em",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 15,
+      "name": "Change drill: C <-> Am",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 16,
+      "name": "Change drill: D <-> G",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 17,
+      "name": "Change drill: D <-> Em",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 18,
+      "name": "Change drill: Am <-> Dm",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 19,
+      "name": "Change drill: C <-> F",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 20,
+      "name": "Three Little Birds (A-D-A-E)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 21,
+      "name": "Zombie (Em-C-G-D)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 22,
+      "name": "With or Without You (D-A-Bm-G)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 23,
+      "name": "Let It Be (C-G-Am-F)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 24,
+      "name": "Stand By Me (C-Am-F-G)",
+      "time_signature": "4/4",
+      "bars_per_chord": 2
+    },
+    {
+      "id": 25,
+      "name": "Sweet Home Alabama (D-Cadd9-G)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 26,
+      "name": "12-bar blues in E",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 27,
+      "name": "12-bar blues in A",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 28,
+      "name": "Doo-wop in G (G-Em-C-D)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 29,
+      "name": "ii-V-I in C (Dm-G-C-C)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    }
+  ],
+  "progression_chords": [
+    {
+      "progression_id": 1,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 1,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 1,
+      "position": 2,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 1,
+      "position": 3,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 2,
+      "position": 0,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 2,
+      "position": 1,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 2,
+      "position": 2,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 3,
+      "position": 0,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 3,
+      "position": 1,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 3,
+      "position": 2,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 3,
+      "position": 3,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 4,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 4,
+      "position": 1,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 4,
+      "position": 2,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 4,
+      "position": 3,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 5,
+      "position": 0,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 5,
+      "position": 1,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 5,
+      "position": 2,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 5,
+      "position": 3,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 5,
+      "position": 4,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 5,
+      "position": 5,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 5,
+      "position": 6,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 5,
+      "position": 7,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 6,
+      "position": 0,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 6,
+      "position": 1,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 6,
+      "position": 2,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 6,
+      "position": 3,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 6,
+      "position": 4,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 6,
+      "position": 5,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 6,
+      "position": 6,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 6,
+      "position": 7,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 7,
+      "position": 0,
+      "chord_id": 17
+    },
+    {
+      "progression_id": 7,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 7,
+      "position": 2,
+      "chord_id": 23
+    },
+    {
+      "progression_id": 7,
+      "position": 3,
+      "chord_id": 26
+    },
+    {
+      "progression_id": 8,
+      "position": 0,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 8,
+      "position": 1,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 9,
+      "position": 0,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 9,
+      "position": 1,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 10,
+      "position": 0,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 10,
+      "position": 1,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 11,
+      "position": 0,
+      "chord_id": 8
+    },
+    {
+      "progression_id": 11,
+      "position": 1,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 12,
+      "position": 0,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 12,
+      "position": 1,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 13,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 13,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 14,
+      "position": 0,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 14,
+      "position": 1,
+      "chord_id": 8
+    },
+    {
+      "progression_id": 15,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 15,
+      "position": 1,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 16,
+      "position": 0,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 16,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 17,
+      "position": 0,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 17,
+      "position": 1,
+      "chord_id": 8
+    },
+    {
+      "progression_id": 18,
+      "position": 0,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 18,
+      "position": 1,
+      "chord_id": 7
+    },
+    {
+      "progression_id": 19,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 19,
+      "position": 1,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 20,
+      "position": 0,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 20,
+      "position": 1,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 20,
+      "position": 2,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 20,
+      "position": 3,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 21,
+      "position": 0,
+      "chord_id": 8
+    },
+    {
+      "progression_id": 21,
+      "position": 1,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 21,
+      "position": 2,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 21,
+      "position": 3,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 22,
+      "position": 0,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 22,
+      "position": 1,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 22,
+      "position": 2,
+      "chord_id": 21
+    },
+    {
+      "progression_id": 22,
+      "position": 3,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 23,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 23,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 23,
+      "position": 2,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 23,
+      "position": 3,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 24,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 24,
+      "position": 1,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 24,
+      "position": 2,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 24,
+      "position": 3,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 25,
+      "position": 0,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 25,
+      "position": 1,
+      "chord_id": 25
+    },
+    {
+      "progression_id": 25,
+      "position": 2,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 26,
+      "position": 0,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 26,
+      "position": 1,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 26,
+      "position": 2,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 26,
+      "position": 3,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 26,
+      "position": 4,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 26,
+      "position": 5,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 26,
+      "position": 6,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 26,
+      "position": 7,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 26,
+      "position": 8,
+      "chord_id": 10
+    },
+    {
+      "progression_id": 26,
+      "position": 9,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 26,
+      "position": 10,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 26,
+      "position": 11,
+      "chord_id": 10
+    },
+    {
+      "progression_id": 27,
+      "position": 0,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 27,
+      "position": 1,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 27,
+      "position": 2,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 27,
+      "position": 3,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 27,
+      "position": 4,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 27,
+      "position": 5,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 27,
+      "position": 6,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 27,
+      "position": 7,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 27,
+      "position": 8,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 27,
+      "position": 9,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 27,
+      "position": 10,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 27,
+      "position": 11,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 28,
+      "position": 0,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 28,
+      "position": 1,
+      "chord_id": 8
+    },
+    {
+      "progression_id": 28,
+      "position": 2,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 28,
+      "position": 3,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 29,
+      "position": 0,
+      "chord_id": 7
+    },
+    {
+      "progression_id": 29,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 29,
+      "position": 2,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 29,
+      "position": 3,
+      "chord_id": 1
+    }
+  ],
+  "chord_categories": [
+    {
+      "id": 1,
+      "name": "Basic Chords"
+    }
+  ],
+  "chord_category_members": [
+    {
+      "category_id": 1,
+      "chord_id": 2
+    },
+    {
+      "category_id": 1,
+      "chord_id": 1
+    },
+    {
+      "category_id": 1,
+      "chord_id": 5
+    },
+    {
+      "category_id": 1,
+      "chord_id": 3
+    },
+    {
+      "category_id": 1,
+      "chord_id": 4
+    },
+    {
+      "category_id": 1,
+      "chord_id": 8
+    },
+    {
+      "category_id": 1,
+      "chord_id": 6
+    },
+    {
+      "category_id": 1,
+      "chord_id": 7
+    }
+  ],
+  "progression_categories": [],
+  "progression_category_members": [],
+  "routine_modules": [
+    {
+      "id": 1,
+      "grade": 1,
+      "position": 0,
+      "title": "Module 0: Before You Begin",
+      "description": "Guitar basics \u2014 how to hold and tune the instrument before you start playing."
+    },
+    {
+      "id": 2,
+      "grade": 1,
+      "position": 1,
+      "title": "Module 1: First Steps (A & D)",
+      "description": "Your first two chords and your first chord change."
+    },
+    {
+      "id": 3,
+      "grade": 1,
+      "position": 2,
+      "title": "Module 2: 8 Essential Beginner Chord Grips",
+      "description": "Lock in the eight open chords every beginner needs: A, D, E, Em, Am, Dm, D7, G."
+    },
+    {
+      "id": 4,
+      "grade": 1,
+      "position": 3,
+      "title": "Module 3: Capo, Minor Chords & Up Strums",
+      "description": "Understand minor chords, get one-minute changes between them, and learn the capo."
+    },
+    {
+      "id": 5,
+      "grade": 1,
+      "position": 4,
+      "title": "Module 4: Metronome, Stretches & THE Strumming Pattern",
+      "description": "Add Dm to your kit and start strumming along with a steady pulse."
+    },
+    {
+      "id": 6,
+      "grade": 1,
+      "position": 5,
+      "title": "Module 5: More Chords (C and G7)",
+      "description": "C is the trickiest open chord; G7 is your gateway to country and blues."
+    },
+    {
+      "id": 7,
+      "grade": 1,
+      "position": 6,
+      "title": "Module 6: Time Signatures & 6/8 Strumming",
+      "description": "Step outside 4/4: feel a waltz in 3/4 and a slow ballad in 6/8."
+    },
+    {
+      "id": 8,
+      "grade": 1,
+      "position": 7,
+      "title": "Module 7: Strumming Mechanics, Dynamics, Up Strums",
+      "description": "Stop being a robot - add accents, ghost strums, and groove."
+    },
+    {
+      "id": 9,
+      "grade": 1,
+      "position": 8,
+      "title": "Module 8: How to PASS Grade 1",
+      "description": "Three song-form tests. If you can play these cleanly in time, you've passed Grade 1."
+    },
+    {
+      "id": 10,
+      "grade": 2,
+      "position": 9,
+      "title": "Module 9: The F Chord",
+      "description": "The dreaded F. Tackle the full barre or one of the easier 3-string voicings."
+    },
+    {
+      "id": 11,
+      "grade": 2,
+      "position": 10,
+      "title": "Module 10: Fingerpicking Basics",
+      "description": "Put the pick down. Thumb plays bass, fingers play melody."
+    },
+    {
+      "id": 12,
+      "grade": 2,
+      "position": 11,
+      "title": "Module 11: Major Scale & Improvisation",
+      "description": "Your first scale, your first solo."
+    },
+    {
+      "id": 13,
+      "grade": 2,
+      "position": 12,
+      "title": "Module 12: Power Chords & Palm Muting",
+      "description": "Two-finger chords that work everywhere. Add palm muting and you have rock."
+    },
+    {
+      "id": 14,
+      "grade": 2,
+      "position": 13,
+      "title": "Module 13: 7th Chord Grips & Blues",
+      "description": "Dominant 7ths - the sound of the blues."
+    },
+    {
+      "id": 15,
+      "grade": 2,
+      "position": 14,
+      "title": "Module 14: Slash Chords",
+      "description": "Chord/bass. C/G means a C chord with G in the bass."
+    },
+    {
+      "id": 16,
+      "grade": 2,
+      "position": 15,
+      "title": "Module 15: How to PASS Grade 2",
+      "description": "Three big tests. Cleanly played, in time, no stops."
+    }
+  ],
+  "routine_exercises": [
+    {
+      "id": 1,
+      "module_id": 1,
+      "position": 0,
+      "title": "Tuning your guitar",
+      "instructions": "Use a clip-on tuner or phone app. Tune low to high: E A D G B E.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 120,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 2,
+      "module_id": 1,
+      "position": 1,
+      "title": "Holding the guitar",
+      "instructions": "Sit with the guitar on your right leg, neck slightly raised.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 3,
+      "module_id": 1,
+      "position": 2,
+      "title": "Holding the pick",
+      "instructions": "Grip lightly between thumb and curled index finger.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 4,
+      "module_id": 1,
+      "position": 3,
+      "title": "Reading chord boxes",
+      "instructions": "6 vertical lines = strings (low E left). Horizontal lines = frets.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 5,
+      "module_id": 1,
+      "position": 4,
+      "title": "Reading TAB",
+      "instructions": "6 horizontal lines = strings (high E top). Numbers = fret to press.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 6,
+      "module_id": 2,
+      "position": 0,
+      "title": "Practice the A chord",
+      "instructions": "Three fingers in the 2nd fret. Press near the fret wire. Strum 5 strings (mute low E).",
+      "target_type": "chord",
+      "target_id": 5,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 7,
+      "module_id": 2,
+      "position": 1,
+      "title": "Practice the D chord",
+      "instructions": "Triangle shape on strings 1-3. Strum 4 strings.",
+      "target_type": "chord",
+      "target_id": 2,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 8,
+      "module_id": 2,
+      "position": 2,
+      "title": "One-minute change: A <-> D",
+      "instructions": "Count how many clean changes you make in 60 seconds. Beat your score each session.",
+      "target_type": "progression",
+      "target_id": 8,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 9,
+      "module_id": 2,
+      "position": 3,
+      "title": "First song in A and D",
+      "instructions": "Three Little Birds uses A, D, and E. Start by playing A and D only.",
+      "target_type": "progression",
+      "target_id": 20,
+      "default_bpm": 70,
+      "default_duration_seconds": 180,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 10,
+      "module_id": 3,
+      "position": 0,
+      "title": "Practice A",
+      "instructions": "Three fingers cramped in fret 2. Curl them so you don't mute strings.",
+      "target_type": "chord",
+      "target_id": 5,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 11,
+      "module_id": 3,
+      "position": 1,
+      "title": "Practice D",
+      "instructions": "Push fingers right up against the frets for a clean tone.",
+      "target_type": "chord",
+      "target_id": 2,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 12,
+      "module_id": 3,
+      "position": 2,
+      "title": "Practice E",
+      "instructions": "All three fingers in fret 1 and 2. Strum all six strings.",
+      "target_type": "chord",
+      "target_id": 3,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 13,
+      "module_id": 3,
+      "position": 3,
+      "title": "Practice Em",
+      "instructions": "Easiest open chord: two fingers in fret 2 on strings A and D.",
+      "target_type": "chord",
+      "target_id": 8,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 14,
+      "module_id": 3,
+      "position": 4,
+      "title": "Practice Am",
+      "instructions": "Same shape as E, shifted one string up.",
+      "target_type": "chord",
+      "target_id": 6,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 15,
+      "module_id": 3,
+      "position": 5,
+      "title": "Practice Dm",
+      "instructions": "Mute low E and A. Three fingers form a triangle on strings 1-3.",
+      "target_type": "chord",
+      "target_id": 7,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 16,
+      "module_id": 3,
+      "position": 6,
+      "title": "Practice D7",
+      "instructions": "Like D, but the index moves to the high E string.",
+      "target_type": "chord",
+      "target_id": 12,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 17,
+      "module_id": 3,
+      "position": 7,
+      "title": "Practice G",
+      "instructions": "The big stretch chord. Use fingers 2-3-4 to keep finger 1 free.",
+      "target_type": "chord",
+      "target_id": 4,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 18,
+      "module_id": 4,
+      "position": 0,
+      "title": "Practice Em",
+      "instructions": "Two fingers, sounds sad. Strum all six strings.",
+      "target_type": "chord",
+      "target_id": 8,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 19,
+      "module_id": 4,
+      "position": 1,
+      "title": "Practice Am",
+      "instructions": "Three fingers, classic 'sad chord' grip.",
+      "target_type": "chord",
+      "target_id": 6,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 20,
+      "module_id": 4,
+      "position": 2,
+      "title": "One-minute change: Em <-> Am",
+      "instructions": "Pivot on the index finger - it doesn't move between the two chords.",
+      "target_type": "progression",
+      "target_id": 11,
+      "default_bpm": 60,
+      "default_duration_seconds": 90,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 21,
+      "module_id": 4,
+      "position": 3,
+      "title": "What are minor chords?",
+      "instructions": "Minor = sad/sombre. Major = bright/happy. The difference is one note (the third).",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 22,
+      "module_id": 4,
+      "position": 4,
+      "title": "Using a capo",
+      "instructions": "A capo raises the pitch of every string. Same shapes, different key.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 23,
+      "module_id": 5,
+      "position": 0,
+      "title": "Practice Dm",
+      "instructions": "Same triangle as D, but the high E is fretted at 1 with the index.",
+      "target_type": "chord",
+      "target_id": 7,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 24,
+      "module_id": 5,
+      "position": 1,
+      "title": "One-minute change: Am <-> Dm",
+      "instructions": "Both use fingers 1, 2, 3. Try to lift and place all three together.",
+      "target_type": "progression",
+      "target_id": 18,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 25,
+      "module_id": 5,
+      "position": 2,
+      "title": "Stretches for guitarists",
+      "instructions": "Wrist rolls, finger fans, and forearm stretches before and after practice.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 26,
+      "module_id": 5,
+      "position": 3,
+      "title": "Strum 'Old Faithful' over Let It Be",
+      "instructions": "D - DU - UDU per bar. Keep your hand moving even when you don't strum.",
+      "target_type": "progression",
+      "target_id": 23,
+      "default_bpm": 70,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 27,
+      "module_id": 6,
+      "position": 0,
+      "title": "Practice C",
+      "instructions": "Three fingers spread across three frets. Curl your fingers to avoid muting.",
+      "target_type": "chord",
+      "target_id": 1,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 28,
+      "module_id": 6,
+      "position": 1,
+      "title": "Practice G7",
+      "instructions": "Like G with the high E played at fret 1 instead of fret 3.",
+      "target_type": "chord",
+      "target_id": 14,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 29,
+      "module_id": 6,
+      "position": 2,
+      "title": "One-minute change: C <-> G",
+      "instructions": "Anchor the ring finger on the A string fret 3 (it stays put for both shapes).",
+      "target_type": "progression",
+      "target_id": 13,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 30,
+      "module_id": 6,
+      "position": 3,
+      "title": "One-minute change: C <-> Am",
+      "instructions": "Top two fingers don't move - just lift the third finger off.",
+      "target_type": "progression",
+      "target_id": 15,
+      "default_bpm": 60,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 31,
+      "module_id": 7,
+      "position": 0,
+      "title": "Knockin' in 3/4",
+      "instructions": "Same chords, three beats per bar. Counts 'one-two-three'.",
+      "target_type": "progression",
+      "target_id": 6,
+      "default_bpm": 90,
+      "default_duration_seconds": 180,
+      "default_time_signature": "3/4",
+      "default_bars_per_chord": 2
+    },
+    {
+      "id": 32,
+      "module_id": 7,
+      "position": 1,
+      "title": "Knockin' in 6/8",
+      "instructions": "Six pulses per bar grouped in two. Counts 'ONE-two-three-FOUR-five-six'.",
+      "target_type": "progression",
+      "target_id": 6,
+      "default_bpm": 80,
+      "default_duration_seconds": 240,
+      "default_time_signature": "6/8",
+      "default_bars_per_chord": 2
+    },
+    {
+      "id": 33,
+      "module_id": 7,
+      "position": 2,
+      "title": "What is a time signature?",
+      "instructions": "Top number = beats per bar. Bottom number = which note value gets one beat.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 34,
+      "module_id": 8,
+      "position": 0,
+      "title": "Strum I-V-vi-IV in C",
+      "instructions": "Keep your strumming hand moving constantly. Loud on beat 1, soft on the rest.",
+      "target_type": "progression",
+      "target_id": 1,
+      "default_bpm": 80,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 35,
+      "module_id": 8,
+      "position": 1,
+      "title": "Strum the 50s progression",
+      "instructions": "Try a slow eighth-note strum and emphasize beats 2 and 4 like a snare.",
+      "target_type": "progression",
+      "target_id": 4,
+      "default_bpm": 90,
+      "default_duration_seconds": 180,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 36,
+      "module_id": 8,
+      "position": 2,
+      "title": "Strumming mechanics",
+      "instructions": "Strum from the wrist, not the elbow. Loose grip on the pick.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 37,
+      "module_id": 8,
+      "position": 3,
+      "title": "Dynamics and accents",
+      "instructions": "Hit some strums harder than others - that's where the groove lives.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 38,
+      "module_id": 9,
+      "position": 0,
+      "title": "Play Three Little Birds",
+      "instructions": "Smooth A-D-A-E loop with no pauses.",
+      "target_type": "progression",
+      "target_id": 20,
+      "default_bpm": 90,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 39,
+      "module_id": 9,
+      "position": 1,
+      "title": "Play Knockin' on Heaven's Door",
+      "instructions": "Two bars per chord. Hold each chord steady - no rushing the change.",
+      "target_type": "progression",
+      "target_id": 6,
+      "default_bpm": 80,
+      "default_duration_seconds": 300,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 2
+    },
+    {
+      "id": 40,
+      "module_id": 9,
+      "position": 2,
+      "title": "Play Zombie",
+      "instructions": "Em-C-G-D loop. The classic 90s alt-rock progression.",
+      "target_type": "progression",
+      "target_id": 21,
+      "default_bpm": 90,
+      "default_duration_seconds": 300,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 41,
+      "module_id": 10,
+      "position": 0,
+      "title": "Practice F",
+      "instructions": "Index finger barres strings 1 and 2 at fret 1. Keep the thumb behind the neck.",
+      "target_type": "chord",
+      "target_id": 20,
+      "default_bpm": 60,
+      "default_duration_seconds": 90,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 42,
+      "module_id": 10,
+      "position": 1,
+      "title": "One-minute change: C <-> F",
+      "instructions": "The hardest beginner change. Move three fingers together as one shape.",
+      "target_type": "progression",
+      "target_id": 19,
+      "default_bpm": 50,
+      "default_duration_seconds": 120,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 43,
+      "module_id": 10,
+      "position": 2,
+      "title": "Play Let It Be",
+      "instructions": "C - G - Am - F. Now you can play it properly with the F.",
+      "target_type": "progression",
+      "target_id": 23,
+      "default_bpm": 75,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 44,
+      "module_id": 11,
+      "position": 0,
+      "title": "Travis picking primer",
+      "instructions": "Thumb alternates between two bass strings. Fingers fill in on top.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 45,
+      "module_id": 11,
+      "position": 1,
+      "title": "Fingerpick Em7",
+      "instructions": "Easiest chord to start with - only two fingers on the fretboard.",
+      "target_type": "chord",
+      "target_id": 17,
+      "default_bpm": 70,
+      "default_duration_seconds": 120,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 46,
+      "module_id": 11,
+      "position": 2,
+      "title": "Fingerpick the Wonderwall verse",
+      "instructions": "Pick instead of strum. Same chords, totally different mood.",
+      "target_type": "progression",
+      "target_id": 7,
+      "default_bpm": 80,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 47,
+      "module_id": 12,
+      "position": 0,
+      "title": "G major scale, shape 1",
+      "instructions": "Two octaves starting on the low E string. Memorize the pattern.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 120,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 48,
+      "module_id": 12,
+      "position": 1,
+      "title": "Finding root notes",
+      "instructions": "Every chord has a root. Find the root of each chord on the low E string.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 49,
+      "module_id": 12,
+      "position": 2,
+      "title": "Improvise over I-IV-V in G",
+      "instructions": "Use the G major scale. Aim for the root note when each chord changes.",
+      "target_type": "progression",
+      "target_id": 2,
+      "default_bpm": 90,
+      "default_duration_seconds": 300,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 50,
+      "module_id": 13,
+      "position": 0,
+      "title": "Power chord shapes",
+      "instructions": "Root + 5th. Two notes, movable, sounds great with distortion.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 51,
+      "module_id": 13,
+      "position": 1,
+      "title": "Strum 12-bar blues in E",
+      "instructions": "Use E5, A5, B5 power chords. Strict downstrokes for the rock feel.",
+      "target_type": "progression",
+      "target_id": 26,
+      "default_bpm": 100,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 52,
+      "module_id": 13,
+      "position": 2,
+      "title": "Palm-muting technique",
+      "instructions": "Rest the side of your strumming-hand palm on the strings near the bridge.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 53,
+      "module_id": 14,
+      "position": 0,
+      "title": "Practice A7",
+      "instructions": "Like A, but lift the ring finger off.",
+      "target_type": "chord",
+      "target_id": 9,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 54,
+      "module_id": 14,
+      "position": 1,
+      "title": "Practice D7",
+      "instructions": "Triangular shape, but the high E moves to fret 2.",
+      "target_type": "chord",
+      "target_id": 12,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 55,
+      "module_id": 14,
+      "position": 2,
+      "title": "Practice E7",
+      "instructions": "Like E, but lift the ring finger off.",
+      "target_type": "chord",
+      "target_id": 13,
+      "default_bpm": 65,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 56,
+      "module_id": 14,
+      "position": 3,
+      "title": "Play 12-bar blues in A",
+      "instructions": "The classic 12-bar form. A7 - D7 - E7. The shuffle.",
+      "target_type": "progression",
+      "target_id": 27,
+      "default_bpm": 90,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 57,
+      "module_id": 14,
+      "position": 4,
+      "title": "Play 12-bar blues in E",
+      "instructions": "Same form, different key. Use E7, A7, B7.",
+      "target_type": "progression",
+      "target_id": 26,
+      "default_bpm": 90,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 58,
+      "module_id": 15,
+      "position": 0,
+      "title": "What are slash chords?",
+      "instructions": "The letter after the slash is the bass note. Used for smooth bass lines.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 59,
+      "module_id": 15,
+      "position": 1,
+      "title": "D/F# concept",
+      "instructions": "D chord with F# (low E string, fret 2) in the bass. Wrap your thumb over.",
+      "target_type": null,
+      "target_id": null,
+      "default_bpm": 80,
+      "default_duration_seconds": 60,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 60,
+      "module_id": 15,
+      "position": 2,
+      "title": "Strum Sweet Home Alabama",
+      "instructions": "D - Cadd9 - G is the signature riff. Sounds great with picking too.",
+      "target_type": "progression",
+      "target_id": 25,
+      "default_bpm": 100,
+      "default_duration_seconds": 240,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 61,
+      "module_id": 16,
+      "position": 0,
+      "title": "Play With or Without You",
+      "instructions": "Four-chord loop, simple but exposing - any timing wobble is obvious.",
+      "target_type": "progression",
+      "target_id": 22,
+      "default_bpm": 90,
+      "default_duration_seconds": 300,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 62,
+      "module_id": 16,
+      "position": 1,
+      "title": "Play Let It Be",
+      "instructions": "Including the F. No skipping or substituting easier chords.",
+      "target_type": "progression",
+      "target_id": 23,
+      "default_bpm": 75,
+      "default_duration_seconds": 300,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    },
+    {
+      "id": 63,
+      "module_id": 16,
+      "position": 2,
+      "title": "12-bar blues at speed",
+      "instructions": "Blues in A at 110 bpm. The shuffle should feel locked in.",
+      "target_type": "progression",
+      "target_id": 27,
+      "default_bpm": 110,
+      "default_duration_seconds": 300,
+      "default_time_signature": "4/4",
+      "default_bars_per_chord": 1
+    }
+  ]
+}

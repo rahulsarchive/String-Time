@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy · String Time</title>
+  <link rel="stylesheet" href="static/css/styles.css" />
+  <style>
+    .legal { max-width: 720px; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1.6; }
+    .legal h1 { margin-bottom: .25rem; }
+    .legal h2 { margin-top: 2rem; }
+    .legal p, .legal li { color: var(--ink-2); }
+    .legal small { color: var(--ink-4); }
+    .legal a { color: var(--accent); }
+    .legal .box { background: var(--bg-2); border: 1px solid var(--line); padding: 1rem 1.25rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <main class="legal">
+    <p><a href="index.html">← Back</a></p>
+    <h1>Privacy</h1>
+    <p><small>Last updated: 2026-10-31</small></p>
+
+    <div class="box">
+      <strong>Short version.</strong> There is no backend. We don't run a user
+      database. Everything you do in String Time stays in your browser's
+      IndexedDB, on your device. If you clear your browser storage or use a
+      different browser, that data isn't recoverable unless you exported it.
+    </div>
+
+    <h2>What we store</h2>
+    <ul>
+      <li>
+        <strong>In your browser (IndexedDB):</strong> your practice sessions,
+        timings, BPM, notes, custom chords, custom progressions, category
+        choices, and preferences.
+      </li>
+      <li>
+        <strong>In your browser (localStorage):</strong> small UI preferences such as the
+        selected audio mode.
+      </li>
+    </ul>
+
+    <h2>What we do NOT collect</h2>
+    <ul>
+      <li>No accounts, no sign-in, no passwords.</li>
+      <li>No analytics scripts, no tracking cookies, no advertising networks.</li>
+      <li>No personal information (name, email, location, device IDs).</li>
+      <li>No microphone, camera, or MIDI access.</li>
+    </ul>
+
+    <h2>Third parties</h2>
+    <ul>
+      <li>
+        The site is served by <strong>Cloudflare Pages</strong>. Cloudflare
+        operates its CDN and processes basic request metadata (IP, user agent,
+        request path) for abuse prevention. See
+        <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's privacy policy</a>.
+      </li>
+      <li>
+        Fonts are loaded from <strong>Google Fonts</strong>. Google receives the
+        IP of visitors fetching the font files. See
+        <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts privacy</a>.
+      </li>
+    </ul>
+
+    <h2>Your controls</h2>
+    <ul>
+      <li><strong>Export</strong> — footer button downloads your entire browser-local data as a JSON file. Keep it as a backup.</li>
+      <li><strong>Import</strong> — footer button restores from a JSON backup. This replaces current data in this browser.</li>
+      <li><strong>Delete</strong> — clear site data for this domain in your browser settings. Everything is gone.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>
+      The service is not directed to children under 13. Because no account or
+      personal information is collected, no COPPA-regulated data is processed.
+      Parents and guardians are responsible for supervising a child's use of the
+      web generally.
+    </p>
+
+    <h2>Jurisdiction</h2>
+    <p>
+      Because the site collects no personal data, GDPR data-subject rights
+      (access, rectification, deletion) are satisfied by your own control of
+      your browser's storage.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions or security reports:
+      <a href="https://github.com/rahulsarchive/String-Time/issues" target="_blank" rel="noopener">open an issue</a>.
+    </p>
+
+    <p><small>This policy is a plain-English starter. It is not legal advice.</small></p>
+  </main>
+</body>
+</html>
