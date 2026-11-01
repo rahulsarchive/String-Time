@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About String Time — Guitar Practice Tracker, Chord Library, Metronome</title>
+  <link rel="stylesheet" href="static/css/styles.css?v=20261101d" />
+  <link rel="canonical" href="https://stringtime.app/about.html" />
+  <meta name="description" content="String Time is a free, browser-based guitar practice tracker: chord library, progression builder, metronome with tempo ramps, routine builder, and a daily plan driven by your own practice history. Think Anki for guitar — spaced-repetition style prioritisation of chords and progressions, with no account and no tracking." />
+  <meta name="keywords" content="guitar practice tracker, guitar practice app, Anki for guitar, spaced repetition for guitar, chord memorization, guitar metronome with tempo ramp, guitar practice routine, fretboard practice, guitar practice journal, guitar practice heatmap, guitar practice streak, free guitar practice tool, private guitar practice tracker" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://stringtime.app/about.html" />
+  <meta property="og:title" content="About String Time — a guitar practice tracker that acts like Anki for chords" />
+  <meta property="og:description" content="Free, browser-based guitar practice tracker. Chord library, progression builder, metronome with tempo ramps, routines, and a daily plan driven by your own history." />
+  <style>
+    .legal { max-width: 760px; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1.65; }
+    .legal h1 { margin-bottom: .25rem; }
+    .legal h2 { margin-top: 2.25rem; }
+    .legal h3 { margin-top: 1.5rem; margin-bottom: .35rem; font-size: 1.05rem; }
+    .legal p, .legal li { color: var(--ink-2); }
+    .legal small { color: var(--ink-4); }
+    .legal a { color: var(--accent); }
+    .legal ul { padding-left: 1.25rem; }
+    .legal .lede { font-size: 1.08rem; color: var(--ink); }
+    .legal .cta { margin-top: 2rem; }
+    .legal .cta a { display: inline-block; padding: 10px 16px; border: 1px solid var(--accent); border-radius: 6px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="legal">
+    <p><a href="index.html">&larr; Back to the app</a></p>
+    <h1>About String Time</h1>
+    <p class="lede">
+      String Time is a free, open-source <strong>guitar practice tracker</strong> that runs
+      entirely in your browser. It is built around a simple idea: the hardest part
+      of practising guitar on your own is not playing — it is <em>knowing what to
+      practise next</em> and seeing whether you are actually getting better.
+    </p>
+
+    <h2>What it does</h2>
+    <ul>
+      <li><strong>Chord library</strong> &mdash; a built-in library of common guitar chords plus a custom chord builder (click the fretboard or type <code>x 3 2 0 1 0</code>-style notation). Each chord carries its own practice time, BPM trend, and accuracy.</li>
+      <li><strong>Progression builder</strong> &mdash; sequence chords into progressions with your own time signature and bars-per-chord. Drag to reorder.</li>
+      <li><strong>Metronome with tempo ramp</strong> &mdash; Web Audio metronome with a 4-bar playhead. Routine items can carry a per-item <strong>tempo ramp</strong> (as a percentage) that drives BPM from a start speed up to a target over the item's duration, so you train deliberate speed increases instead of staying on the same BPM forever.</li>
+      <li><strong>Routines</strong> &mdash; ordered lists of practice items (chord or progression, BPM, time signature, duration, ramp %). Start one item or run the whole routine back-to-back.</li>
+      <li><strong>Today's plan</strong> &mdash; three chords and a progression picked each day from your own history: the chord with the lowest recent accuracy, the one you haven't touched in the longest, any BPM plateau you've hit, and a progression that uses them.</li>
+      <li><strong>History and stats</strong> &mdash; GitHub-style 365-day practice heatmap, days/weeks/months chart, current and longest streaks, average minutes per day, most active hour, per-chord totals, and a fretboard density map.</li>
+      <li><strong>Private by default</strong> &mdash; all data lives in your browser's IndexedDB. Nothing is sent anywhere. Export and import JSON backups to move between browsers.</li>
+    </ul>
+
+    <h2>Pain points it tries to solve</h2>
+
+    <h3>&ldquo;I don't know what to practise today.&rdquo;</h3>
+    <p>
+      Most guitar practice apps hand you a long tutorial track and leave planning
+      to you. Today's plan does the opposite: it reads your logged sessions and
+      picks a short, targeted set — the chord that's been slipping, the one
+      you've been avoiding, and a BPM you've plateaued at. If you have ten
+      minutes, you have a list. That's spaced repetition applied to guitar
+      chords and progressions, in the spirit of Anki but for your fingers.
+    </p>
+
+    <h3>&ldquo;I can't tell if I'm actually getting better.&rdquo;</h3>
+    <p>
+      Every chord carries a BPM trend sparkline, a total time counter, and an
+      accuracy signal. The dashboard heatmap shows you a year at a glance. If a
+      chord is stuck at the same BPM for weeks you'll see it — and the daily
+      plan will put a ramp on it.
+    </p>
+
+    <h3>&ldquo;I keep breaking my practice streak.&rdquo;</h3>
+    <p>
+      String Time shows your current streak and longest streak, a 14-day minutes
+      chart, and a session-list that reaches back as far as you've played. The
+      daily plan is short on purpose: a smaller target you'll actually meet is
+      worth more than a long one you skip.
+    </p>
+
+    <h3>&ldquo;I don't want to sign up for yet another app.&rdquo;</h3>
+    <p>
+      There is no account. There is no server that holds your practice history.
+      Your chords, progressions, routines and session log live in your
+      browser's local database. Export to JSON if you want a copy; import on
+      another device if you're moving. If you clear site data, you clear your
+      history &mdash; just like a notebook.
+    </p>
+
+    <h3>&ldquo;I'm self-taught and have no teacher to tell me what to work on.&rdquo;</h3>
+    <p>
+      The daily plan is the closest thing to a teacher looking over your
+      shoulder that a static page can offer. It won't fix your technique, but
+      it will remind you that you haven't drilled F in two weeks and that your
+      G-major-at-120 has plateaued.
+    </p>
+
+    <h2>How to use it</h2>
+    <ol>
+      <li>Open <a href="index.html">stringtime.app</a> in any modern browser.</li>
+      <li>The chord library is seeded on first load.</li>
+      <li>Click a chord in the Library to pop the floating player — pick a BPM, pick a time signature, hit Start.</li>
+      <li>Build a routine in Routines: add items, give each one a BPM, duration and optional tempo ramp percent, and press Start routine.</li>
+      <li>Check back the next day — Today's plan rebuilds from the latest sessions.</li>
+    </ol>
+
+    <h2>Technology</h2>
+    <p>
+      String Time is a static web page. No build step, no server, no analytics.
+      It uses the Web Audio API for the metronome (with a lookahead scheduler so
+      the beat stays locked to the audio clock) and a Karplus-Strong plucked
+      string synth with a modeled guitar body for the chord audio. Practice data is stored in IndexedDB.
+      The source is on
+      <a href="https://github.com/rahulsarchive/String-Time" target="_blank" rel="noopener">GitHub</a>.
+    </p>
+
+    <h2>License &amp; author</h2>
+    <p>
+      String Time is &copy; 2026 Rahul S Rajan, released under the
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial 4.0 International</a>
+      license. Use, share and adapt it for non-commercial purposes with
+      attribution; commercial use needs a separate agreement.
+    </p>
+
+    <div class="cta">
+      <a href="index.html">Open the practice tracker &rarr;</a>
+    </div>
+
+    <p style="margin-top: 2rem;"><small>Keywords this page covers: guitar practice tracker, Anki for guitar, spaced repetition guitar practice, chord library, chord memorization, guitar metronome with tempo ramp, guitar practice routine builder, fretboard density, guitar practice streak, free guitar practice app, private guitar practice tracker, no-account guitar practice.</small></p>
+  </main>
+</body>
+</html>

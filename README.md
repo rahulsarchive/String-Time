@@ -51,4 +51,4 @@ license (CC BY-NC 4.0). You may use, share and adapt the project for
 non-commercial purposes with attribution. Commercial use requires a
 separate agreement.
 
-See [`LICENSE`](LICENSE) for the full notice.
+See [`LICENSE`](LICENSE) .

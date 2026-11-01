@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "chords": [
     {
       "id": 1,
@@ -722,6 +722,72 @@
       "name": "ii-V-I in C (Dm-G-C-C)",
       "time_signature": "4/4",
       "bars_per_chord": 1
+    },
+    {
+      "id": 30,
+      "name": "Change drill: G <-> Am",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 31,
+      "name": "Change drill: D <-> Bm",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 32,
+      "name": "Change drill: A <-> Bm",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 33,
+      "name": "Change drill: F <-> Dm",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 34,
+      "name": "I-IV-V in C (C-F-G)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 35,
+      "name": "I-IV-V in A (A-D-E)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 36,
+      "name": "I-IV-V in D (D-G-A)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 37,
+      "name": "I-V-vi-IV in G (G-D-Em-C)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 38,
+      "name": "Andalusian cadence (Am-G-F-E)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 39,
+      "name": "Minor i-iv-V (Am-Dm-E)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
+    },
+    {
+      "id": 40,
+      "name": "vi-ii-V-I in C (Am-Dm-G-C)",
+      "time_signature": "4/4",
+      "bars_per_chord": 1
     }
   ],
   "progression_chords": [
@@ -1294,6 +1360,166 @@
       "progression_id": 29,
       "position": 3,
       "chord_id": 1
+    },
+    {
+      "progression_id": 30,
+      "position": 0,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 30,
+      "position": 1,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 31,
+      "position": 0,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 31,
+      "position": 1,
+      "chord_id": 21
+    },
+    {
+      "progression_id": 32,
+      "position": 0,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 32,
+      "position": 1,
+      "chord_id": 21
+    },
+    {
+      "progression_id": 33,
+      "position": 0,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 33,
+      "position": 1,
+      "chord_id": 7
+    },
+    {
+      "progression_id": 34,
+      "position": 0,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 34,
+      "position": 1,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 34,
+      "position": 2,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 35,
+      "position": 0,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 35,
+      "position": 1,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 35,
+      "position": 2,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 36,
+      "position": 0,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 36,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 36,
+      "position": 2,
+      "chord_id": 5
+    },
+    {
+      "progression_id": 37,
+      "position": 0,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 37,
+      "position": 1,
+      "chord_id": 2
+    },
+    {
+      "progression_id": 37,
+      "position": 2,
+      "chord_id": 8
+    },
+    {
+      "progression_id": 37,
+      "position": 3,
+      "chord_id": 1
+    },
+    {
+      "progression_id": 38,
+      "position": 0,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 38,
+      "position": 1,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 38,
+      "position": 2,
+      "chord_id": 20
+    },
+    {
+      "progression_id": 38,
+      "position": 3,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 39,
+      "position": 0,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 39,
+      "position": 1,
+      "chord_id": 7
+    },
+    {
+      "progression_id": 39,
+      "position": 2,
+      "chord_id": 3
+    },
+    {
+      "progression_id": 40,
+      "position": 0,
+      "chord_id": 6
+    },
+    {
+      "progression_id": 40,
+      "position": 1,
+      "chord_id": 7
+    },
+    {
+      "progression_id": 40,
+      "position": 2,
+      "chord_id": 4
+    },
+    {
+      "progression_id": 40,
+      "position": 3,
+      "chord_id": 1
     }
   ],
   "chord_categories": [
@@ -1336,15 +1562,201 @@
       "chord_id": 7
     }
   ],
-  "progression_categories": [],
-  "progression_category_members": [],
+  "progression_categories": [
+    {
+      "id": 1,
+      "name": "Beginner essentials"
+    },
+    {
+      "id": 2,
+      "name": "Change drills"
+    },
+    {
+      "id": 3,
+      "name": "Classic songs"
+    },
+    {
+      "id": 4,
+      "name": "Blues"
+    },
+    {
+      "id": 5,
+      "name": "Jazz & minor"
+    }
+  ],
+  "progression_category_members": [
+    {
+      "category_id": 1,
+      "progression_id": 2
+    },
+    {
+      "category_id": 1,
+      "progression_id": 4
+    },
+    {
+      "category_id": 1,
+      "progression_id": 20
+    },
+    {
+      "category_id": 1,
+      "progression_id": 34
+    },
+    {
+      "category_id": 1,
+      "progression_id": 35
+    },
+    {
+      "category_id": 1,
+      "progression_id": 36
+    },
+    {
+      "category_id": 1,
+      "progression_id": 37
+    },
+    {
+      "category_id": 1,
+      "progression_id": 1
+    },
+    {
+      "category_id": 2,
+      "progression_id": 8
+    },
+    {
+      "category_id": 2,
+      "progression_id": 9
+    },
+    {
+      "category_id": 2,
+      "progression_id": 10
+    },
+    {
+      "category_id": 2,
+      "progression_id": 11
+    },
+    {
+      "category_id": 2,
+      "progression_id": 12
+    },
+    {
+      "category_id": 2,
+      "progression_id": 13
+    },
+    {
+      "category_id": 2,
+      "progression_id": 14
+    },
+    {
+      "category_id": 2,
+      "progression_id": 15
+    },
+    {
+      "category_id": 2,
+      "progression_id": 16
+    },
+    {
+      "category_id": 2,
+      "progression_id": 17
+    },
+    {
+      "category_id": 2,
+      "progression_id": 18
+    },
+    {
+      "category_id": 2,
+      "progression_id": 19
+    },
+    {
+      "category_id": 2,
+      "progression_id": 30
+    },
+    {
+      "category_id": 2,
+      "progression_id": 31
+    },
+    {
+      "category_id": 2,
+      "progression_id": 32
+    },
+    {
+      "category_id": 2,
+      "progression_id": 33
+    },
+    {
+      "category_id": 3,
+      "progression_id": 1
+    },
+    {
+      "category_id": 3,
+      "progression_id": 3
+    },
+    {
+      "category_id": 3,
+      "progression_id": 5
+    },
+    {
+      "category_id": 3,
+      "progression_id": 6
+    },
+    {
+      "category_id": 3,
+      "progression_id": 7
+    },
+    {
+      "category_id": 3,
+      "progression_id": 21
+    },
+    {
+      "category_id": 3,
+      "progression_id": 22
+    },
+    {
+      "category_id": 3,
+      "progression_id": 23
+    },
+    {
+      "category_id": 3,
+      "progression_id": 24
+    },
+    {
+      "category_id": 3,
+      "progression_id": 25
+    },
+    {
+      "category_id": 3,
+      "progression_id": 38
+    },
+    {
+      "category_id": 4,
+      "progression_id": 26
+    },
+    {
+      "category_id": 4,
+      "progression_id": 27
+    },
+    {
+      "category_id": 5,
+      "progression_id": 28
+    },
+    {
+      "category_id": 5,
+      "progression_id": 29
+    },
+    {
+      "category_id": 5,
+      "progression_id": 39
+    },
+    {
+      "category_id": 5,
+      "progression_id": 40
+    }
+  ],
   "routine_modules": [
     {
       "id": 1,
       "grade": 1,
       "position": 0,
       "title": "Module 0: Before You Begin",
-      "description": "Guitar basics \u2014 how to hold and tune the instrument before you start playing."
+      "description": "Guitar basics — how to hold and tune the instrument before you start playing."
     },
     {
       "id": 2,

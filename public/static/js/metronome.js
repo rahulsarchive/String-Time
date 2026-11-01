@@ -28,9 +28,10 @@
   }
 
   class Metronome {
-    constructor({ svg, onBeat }) {
+    constructor({ svg, onBeat, onBpmChange }) {
       this.svg = svg;
       this.onBeat = onBeat || (() => {});
+      this.onBpmChange = onBpmChange || (() => {});
       this.bpm = 80;
       this.beatsPerBar = 4;
       this.totalBars = 4;
@@ -43,7 +44,35 @@
       this.isRunning = false;
       this.muted = false;
 
+      // Per-session tempo ramp. The player owns this — the routine item just
+      // tells the player to ramp. See setRamp() / clearRamp().
+      this.rampStartBpm = null;
+      this.rampEndBpm = null;
+      this.rampDurationSec = null;
+
       this._buildSvg();
+    }
+
+    // Ramp BPM linearly from start → end over the duration, measured against
+    // the audio clock from the moment start() runs after this call.
+    setRamp(startBpm, endBpm, durationSec) {
+      this.rampStartBpm = startBpm;
+      this.rampEndBpm = endBpm;
+      this.rampDurationSec = durationSec;
+      this.bpm = Math.max(20, Math.min(300, startBpm));
+      this.onBpmChange(this.bpm, { start: startBpm, end: endBpm, active: true });
+    }
+
+    clearRamp() {
+      const wasActive = this.rampEndBpm != null;
+      this.rampStartBpm = null;
+      this.rampEndBpm = null;
+      this.rampDurationSec = null;
+      if (wasActive) this.onBpmChange(this.bpm, { active: false });
+    }
+
+    getRampTargetBpm() {
+      return this.rampEndBpm;
     }
 
     _buildSvg() {
@@ -176,12 +205,25 @@
       this.playhead.style.transform = "translateX(0px)";
       // Reset highlight
       this._highlightBeat(-1);
+      // Ramp is per-run — clear so the next start doesn't inherit it.
+      this.clearRamp();
     }
 
     _scheduler() {
       if (!this.isRunning) return;
-      const secondsPerBeat = 60.0 / this.bpm;
       while (this.nextNoteTime < this.audioCtx.currentTime + LOOKAHEAD_S) {
+        // Apply tempo ramp (if any) against the audio clock before scheduling
+        // this beat — the ramp owns tempo while it's active.
+        if (this.rampEndBpm != null && this.rampDurationSec > 0) {
+          const elapsed = this.nextNoteTime - this.startCtxTime;
+          const t = Math.min(1, Math.max(0, elapsed / this.rampDurationSec));
+          const bpmNow = Math.round(this.rampStartBpm + (this.rampEndBpm - this.rampStartBpm) * t);
+          if (bpmNow !== this.bpm) {
+            this.bpm = bpmNow;
+            try { this.onBpmChange(bpmNow, { start: this.rampStartBpm, end: this.rampEndBpm, active: true }); } catch (_) {}
+          }
+        }
+        const secondsPerBeat = 60.0 / this.bpm;
         const beatIdx = this.beatCounter; // 0,1,2,...
         const beatInBar = beatIdx % this.beatsPerBar;
         this._scheduleClick(this.nextNoteTime, beatInBar === 0);

@@ -1014,6 +1014,26 @@ main {
   width: 120px;
   accent-color: var(--accent);
 }
+.play-bar .bpm-target {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(200, 80, 28, 0.08);
+  border: 1px solid rgba(200, 80, 28, 0.25);
+  border-radius: 4px;
+  padding: 2px 6px;
+  letter-spacing: 0.3px;
+  animation: bpm-target-pulse 1.4s ease-in-out infinite;
+}
+body.is-playing .play-bar .bpm-target {
+  background: rgba(200, 80, 28, 0.18);
+  border-color: rgba(200, 80, 28, 0.45);
+}
+@keyframes bpm-target-pulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
 .play-bar select {
   padding: 4px 8px;
   font-size: 13px;
@@ -1189,6 +1209,15 @@ body.is-playing .play-bar input[type="number"],
 body.is-playing .play-bar select {
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.12);
+  color: #f5f5f3;
+  /* Tells the browser to render the native dropdown panel in dark theme,
+     so unselected options aren't white-on-white. */
+  color-scheme: dark;
+}
+/* Fallback for browsers that ignore color-scheme on the dropdown panel:
+   paint each option explicitly so it's always readable. */
+body.is-playing .play-bar select option {
+  background: #1a1a1a;
   color: #f5f5f3;
 }
 body.is-playing .play-bar .audio-mode-group { background: rgba(255,255,255,0.06); }

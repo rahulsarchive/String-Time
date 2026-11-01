@@ -4,6 +4,34 @@
   const TOTAL_BARS = 4;
   const AUDIO_MODE_KEY = "gpt_audio_mode";
   const VALID_AUDIO_MODES = new Set(["tick", "chord", "both"]);
+  const TONE_KEY = "gpt_tone_preset";
+  const STRUM_KEY = "gpt_strum_pattern";
+  // Eighth-note strum patterns per bar, keyed by beats per bar.
+  // D = downstroke, U = upstroke, - = rest.
+  const STRUM_PATTERNS = {
+    bar: { 4: "D-------", 3: "D-----" },
+    quarters: { 4: "D-D-D-D-", 3: "D-D-D-" },
+    folk: { 4: "D-DU-UDU", 3: "D-DUDU" },
+    eighths: { 4: "DUDUDUDU", 3: "DUDUDU" },
+  };
+
+  function strumPattern(key, beats) {
+    const p = STRUM_PATTERNS[key] || STRUM_PATTERNS.bar;
+    if (p[beats]) return p[beats];
+    // Other time signatures: once per bar for "bar", a down on every beat otherwise.
+    return key === "bar" ? "D" + "-".repeat(beats * 2 - 1) : "D-".repeat(beats);
+  }
+
+  function loadPref(key, isValid, fallback) {
+    try {
+      const v = localStorage.getItem(key);
+      return isValid(v) ? v : fallback;
+    } catch (_) { return fallback; }
+  }
+
+  function savePref(key, value) {
+    try { localStorage.setItem(key, value); } catch (_) {}
+  }
 
   class Practice {
     constructor() {
@@ -20,6 +48,9 @@
       this.beatsPerChord = 4;
       this.beatsPerBar = 4;
       this.audioMode = this._loadAudioMode();
+      this.tonePreset = loadPref(TONE_KEY,
+        (v) => !!(v && window.ChordAudio && window.ChordAudio.PRESETS[v]), "acoustic");
+      this.strumPatternKey = loadPref(STRUM_KEY, (v) => !!(v && STRUM_PATTERNS[v]), "bar");
       this.activeChordCategoryId = "all";
       this.activeProgCategoryId = "all";
 
@@ -46,6 +77,7 @@
       this.elTabs = document.querySelectorAll(".picker > .tabs .tab");
       this.elBpm = document.getElementById("bpm");
       this.elBpmSlider = document.getElementById("bpm-slider");
+      this.elBpmTarget = document.getElementById("bpm-target");
       this.elTimeSig = document.getElementById("time-sig");
       this.elBpcWrap = document.getElementById("bars-per-chord-wrap");
       this.elBpc = document.getElementById("bars-per-chord");
@@ -58,6 +90,8 @@
       this.elNextName = document.getElementById("next-chord-name");
       this.elNextSvg = document.getElementById("next-chord-svg");
       this.elAudioModeBtns = document.querySelectorAll(".audio-mode-btn");
+      this.elTone = document.getElementById("tone-preset");
+      this.elStrum = document.getElementById("strum-pattern");
 
       // Chord category controls
       this.elChordCatBar = document.getElementById("chord-category-bar");
@@ -97,6 +131,18 @@
       this.elAudioModeBtns.forEach((btn) => {
         btn.addEventListener("click", () => this._setAudioMode(btn.dataset.mode));
       });
+      if (this.elTone) {
+        this.elTone.value = this.tonePreset;
+        this.elTone.addEventListener("change", () => this._setTone(this.elTone.value));
+      }
+      if (this.elStrum) {
+        this.elStrum.value = this.strumPatternKey;
+        this.elStrum.addEventListener("change", () => {
+          if (!STRUM_PATTERNS[this.elStrum.value]) return;
+          this.strumPatternKey = this.elStrum.value;
+          savePref(STRUM_KEY, this.strumPatternKey);
+        });
+      }
 
       // Chord categories
       this.elChordCatAddBtn.addEventListener("click", () => this._promptNewChordCategory());
@@ -665,6 +711,23 @@
       });
     }
 
+    _setTone(key) {
+      if (!window.ChordAudio || !window.ChordAudio.PRESETS[key]) return;
+      this.tonePreset = key;
+      savePref(TONE_KEY, key);
+      // Takes effect on the next strum; pre-render so it doesn't hitch.
+      if (this.chordAudio) {
+        this.chordAudio.setPreset(key);
+        this.chordAudio.prepare(this._selectionFrets());
+      }
+    }
+
+    _selectionFrets() {
+      if (!this.selection) return [];
+      if (this.selection.type === "chord") return [this.selection.chord.frets];
+      return this.selection.progression.chords.map((c) => c.frets);
+    }
+
     _applyMetronomeMuting() {
       if (!this.metronome) return;
       this.metronome.setMuted(this.audioMode === "chord");
@@ -688,6 +751,10 @@
         }
         this.chordAudio = new window.ChordAudio(this.metronome.audioCtx);
       }
+      if (this.chordAudio) {
+        this.chordAudio.setPreset(this.tonePreset);
+        this.chordAudio.prepare(this._selectionFrets());
+      }
 
       this.session = {
         startedAtMs: Date.now(),
@@ -704,6 +771,9 @@
     _stop() {
       if (!this.session) return;
       this.metronome.stop();
+      if (this.chordAudio && this.metronome.audioCtx) {
+        this.chordAudio.stop(this.metronome.audioCtx.currentTime);
+      }
       clearInterval(this.timerId);
       this.timerId = null;
 
@@ -733,9 +803,8 @@
       this._builderItemEndCallback = null;
       this._builderItemNaturalEnd = false;
       this.targetDurationSec = null;
-      this.rampStartBpm = null;
-      this.rampEndBpm = null;
-      this._lastRampBpm = null;
+      // Metronome's stop() clears its own ramp; just hide the UI chip.
+      if (this.elBpmTarget) this.elBpmTarget.classList.add("hidden");
 
       this._saveSession(payload).then(() => {
         if (cb) cb(natural ? "complete" : "abort");
@@ -751,17 +820,6 @@
         const m = Math.floor(remaining / 60);
         const s = remaining % 60;
         this.elTimer.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-        // Per-item BPM ramp: linear from rampStart → rampEnd over the item duration.
-        if (this.rampStartBpm != null && this.rampEndBpm != null && this.targetDurationSec > 0) {
-          const t = Math.min(1, elapsedSec / this.targetDurationSec);
-          const bpm = Math.round(this.rampStartBpm + (this.rampEndBpm - this.rampStartBpm) * t);
-          if (bpm !== this._lastRampBpm) {
-            this._lastRampBpm = bpm;
-            this.elBpm.value = bpm;
-            this.elBpmSlider.value = bpm;
-            if (this.metronome) this.metronome.configure({ bpm });
-          }
-        }
         if (remaining <= 0) {
           // Natural completion — flag and stop
           this._builderItemNaturalEnd = true;
@@ -771,6 +829,21 @@
         const m = Math.floor(elapsedSec / 60);
         const s = elapsedSec % 60;
         this.elTimer.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+      }
+    }
+
+    // Fired by the metronome whenever its internal BPM changes (e.g. a ramp
+    // tick). Keeps the player's BPM input/slider and target chip in sync.
+    onBpmChange(bpm, info) {
+      if (this.elBpm) this.elBpm.value = bpm;
+      if (this.elBpmSlider) this.elBpmSlider.value = bpm;
+      if (this.elBpmTarget) {
+        if (info && info.active && info.end != null && info.end !== bpm) {
+          this.elBpmTarget.textContent = `→ ${info.end}`;
+          this.elBpmTarget.classList.remove("hidden");
+        } else {
+          this.elBpmTarget.classList.add("hidden");
+        }
       }
     }
 
@@ -796,9 +869,21 @@
         chord = chords[idx];
       }
 
-      if (this.chordAudio && this.audioMode !== "tick"
-          && beatIdx % this.beatsPerBar === 0) {
-        this.chordAudio.play(audioTime, chord.frets);
+      if (this.chordAudio && this.audioMode !== "tick") {
+        const pattern = strumPattern(this.strumPatternKey, this.beatsPerBar);
+        const beat = beatIdx % this.beatsPerBar;
+        const halfBeat = 0.5 * 60 / this.metronome.bpm;
+        for (let h = 0; h < 2; h++) {
+          const stroke = pattern[beat * 2 + h];
+          if (stroke !== "D" && stroke !== "U") continue;
+          const downbeat = beat === 0 && h === 0;
+          const velocity = stroke === "U" ? 0.6 : (downbeat ? 1 : 0.8);
+          const jitter = downbeat ? 0 : (Math.random() - 0.5) * 0.01;   // ±5 ms
+          this.chordAudio.play(audioTime + h * halfBeat + jitter, chord.frets, {
+            direction: stroke === "U" ? "up" : "down",
+            velocity,
+          });
+        }
       }
     }
 
@@ -849,15 +934,15 @@
       this._builderItemNaturalEnd = false;
 
       // Per-item tempo ramp: start at item.bpm, end at bpm * (1 + percent/100).
+      // Push the ramp down to the metronome (the player owns tempo-over-time).
       const pct = Math.max(0, Math.min(100, parseInt(item.ramp_percent || 0, 10) || 0));
-      if (pct > 0) {
-        this.rampStartBpm = parseInt(item.bpm, 10) || 80;
-        this.rampEndBpm = Math.min(240, Math.round(this.rampStartBpm * (1 + pct / 100)));
-      } else {
-        this.rampStartBpm = null;
-        this.rampEndBpm = null;
+      if (pct > 0 && this.metronome) {
+        const startBpm = parseInt(item.bpm, 10) || 80;
+        const endBpm = Math.min(240, Math.round(startBpm * (1 + pct / 100)));
+        this.metronome.setRamp(startBpm, endBpm, item.duration_seconds);
+      } else if (this.metronome) {
+        this.metronome.clearRamp();
       }
-      this._lastRampBpm = null;
 
       this._start();
     }

@@ -19,6 +19,7 @@
     const metronome = new window.Metronome({
       svg: document.getElementById("bar-svg"),
       onBeat: (beatIdx, audioTime, ctx) => practice.onBeat(beatIdx, audioTime, ctx),
+      onBpmChange: (bpm, info) => practice.onBpmChange(bpm, info),
     });
     practice.setMetronome(metronome);
 

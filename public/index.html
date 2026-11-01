@@ -3,14 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>String Time</title>
+  <title>String Time — Guitar Practice Tracker · Chords, Metronome, Routines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="static/css/styles.css?v=20261101b" />
+  <link rel="stylesheet" href="static/css/styles.css?v=20261101d" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='50%25' y='55%25' font-size='28' text-anchor='middle' dominant-baseline='middle' font-family='serif' fill='%23b45309'%3E%C2%A7%3C/text%3E%3C/svg%3E" />
-  <meta name="description" content="Guitar practice tracker with built-in chord library, progression builder, metronome, and session history. All data stays in your browser." />
+  <meta name="description" content="Free guitar practice tracker in your browser. Build chord libraries and progressions, run a metronome with tempo ramps, log practice sessions, and get a daily plan — spaced repetition for guitar, with no account and no tracking." />
+  <meta name="keywords" content="guitar practice tracker, guitar practice app, Anki for guitar, spaced repetition guitar, chord practice, guitar metronome, guitar practice journal, guitar routine builder, fretboard memorization, guitar practice log, guitar practice streak, chord library, progression builder, deliberate practice guitar, self-taught guitar, free guitar practice tool" />
+  <meta name="author" content="Rahul S Rajan" />
   <meta name="theme-color" content="#f8f5ef" />
+  <link rel="canonical" href="https://stringtime.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stringtime.app/" />
+  <meta property="og:title" content="String Time — Guitar Practice Tracker" />
+  <meta property="og:description" content="Spaced-repetition style guitar practice: chord library, progression builder, metronome with tempo ramps, routines, and a daily practice plan. Lives in your browser — no account, no tracking." />
+  <meta property="og:site_name" content="String Time" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="String Time — Guitar Practice Tracker" />
+  <meta name="twitter:description" content="Chord library, progressions, metronome with tempo ramps, routines, and a daily practice plan. All data stays in your browser." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "String Time",
+    "url": "https://stringtime.app/",
+    "applicationCategory": "EducationApplication",
+    "applicationSubCategory": "MusicApplication",
+    "operatingSystem": "Any (runs in a web browser)",
+    "browserRequirements": "Requires a modern browser with IndexedDB (Chrome, Firefox, Safari, Edge).",
+    "description": "A guitar practice tracker that runs entirely in the browser. Build a chord library, write progressions, run a metronome with per-item tempo ramps, create routines, and get a daily practice plan driven by your own history. Uses spaced-repetition style prioritisation — think Anki, but for guitar chords and progressions.",
+    "author": { "@type": "Person", "name": "Rahul S Rajan" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "softwareVersion": "2026.11",
+    "featureList": [
+      "Guitar chord library with custom chord builder",
+      "Chord progression builder",
+      "Web Audio metronome with 4-bar playhead",
+      "Per-item tempo-ramp practice routines (BPM ladder)",
+      "Daily practice plan from your own history (spaced-repetition style)",
+      "GitHub-style 365-day practice heatmap and streaks",
+      "Per-chord BPM trends and accuracy tracking",
+      "Fretboard density map",
+      "Local-only storage (IndexedDB) — no account, no tracking",
+      "JSON export and import for backup"
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- =============== APP BAR =============== -->
@@ -315,6 +355,7 @@
         <div class="field">
           <input type="range" id="bpm-slider" min="40" max="240" value="80" />
           <input type="number" id="bpm" min="40" max="240" value="80" />
+          <span id="bpm-target" class="bpm-target hidden" title="Ramping toward this BPM"></span>
         </div>
       </div>
       <div class="control">
@@ -343,6 +384,29 @@
           <button class="audio-mode-btn" data-mode="tick" type="button">Tick</button>
           <button class="audio-mode-btn" data-mode="chord" type="button">Chord</button>
           <button class="audio-mode-btn active" data-mode="both" type="button">Both <span class="wf" id="wf-both"></span></button>
+        </div>
+      </div>
+      <div class="control">
+        <label for="tone-preset">Tone</label>
+        <div class="field">
+          <select id="tone-preset">
+            <option value="acoustic">Acoustic (steel)</option>
+            <option value="nylon">Classical (nylon)</option>
+            <option value="twelve">12-string</option>
+            <option value="electric">Electric clean</option>
+            <option value="crunch">Electric crunch</option>
+          </select>
+        </div>
+      </div>
+      <div class="control">
+        <label for="strum-pattern">Strum</label>
+        <div class="field">
+          <select id="strum-pattern">
+            <option value="bar">Once per bar</option>
+            <option value="quarters">Quarter notes</option>
+            <option value="folk">Folk (D-DU-UDU)</option>
+            <option value="eighths">Eighth notes</option>
+          </select>
         </div>
       </div>
     </div>
@@ -575,6 +639,7 @@
     <div class="site-footer-inner">
       <span>String Time — Let's keep track of the time on the Strings. · © 2026 Rahul S Rajan · <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
       <nav>
+        <a href="about.html">About</a>
         <a href="terms.html">Terms</a>
         <a href="privacy.html">Privacy</a>
         <a href="https://github.com/rahulsarchive/String-Time" target="_blank" rel="noopener">GitHub</a>
@@ -586,20 +651,20 @@
   </footer>
 
   <!-- =============== SCRIPTS =============== -->
-  <script src="static/js/store.js?v=20261101b"></script>
-  <script src="static/js/chord-diagram.js?v=20261101b"></script>
-  <script src="static/js/chord-builder.js?v=20261101b"></script>
-  <script src="static/js/progression-builder.js?v=20261101b"></script>
-  <script src="static/js/chord-audio.js?v=20261101b"></script>
-  <script src="static/js/metronome.js?v=20261101b"></script>
-  <script src="static/js/widgets.js?v=20261101b"></script>
-  <script src="static/js/dashboard.js?v=20261101b"></script>
-  <script src="static/js/history.js?v=20261101b"></script>
-  <script src="static/js/practice-session-builder.js?v=20261101b"></script>
-  <script src="static/js/practice.js?v=20261101b"></script>
-  <script src="static/js/export-import.js?v=20261101b"></script>
-  <script src="static/js/profile.js?v=20261101b"></script>
-  <script src="static/js/search.js?v=20261101b"></script>
-  <script src="static/js/app.js?v=20261101b"></script>
+  <script src="static/js/store.js?v=20261101d"></script>
+  <script src="static/js/chord-diagram.js?v=20261101d"></script>
+  <script src="static/js/chord-builder.js?v=20261101d"></script>
+  <script src="static/js/progression-builder.js?v=20261101d"></script>
+  <script src="static/js/chord-audio.js?v=20261101d"></script>
+  <script src="static/js/metronome.js?v=20261101d"></script>
+  <script src="static/js/widgets.js?v=20261101d"></script>
+  <script src="static/js/dashboard.js?v=20261101d"></script>
+  <script src="static/js/history.js?v=20261101d"></script>
+  <script src="static/js/practice-session-builder.js?v=20261101d"></script>
+  <script src="static/js/practice.js?v=20261101d"></script>
+  <script src="static/js/export-import.js?v=20261101d"></script>
+  <script src="static/js/profile.js?v=20261101d"></script>
+  <script src="static/js/search.js?v=20261101d"></script>
+  <script src="static/js/app.js?v=20261101d"></script>
 </body>
 </html>

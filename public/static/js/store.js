@@ -97,7 +97,9 @@
 
   async function seedIfNeeded() {
     const meta = await get("meta", LIBRARY_META_KEY);
-    const res = await fetch("library.json");
+    // Bypass the HTTP cache so a deploy's new seed data is picked up on the
+    // next load, not an hour later when the stale JSON finally revalidates.
+    const res = await fetch("library.json", { cache: "no-cache" });
     if (!res.ok) throw new Error("library.json fetch failed: " + res.status);
     const lib = await res.json();
     if (meta && meta.value === lib.schema_version) return; // already seeded
